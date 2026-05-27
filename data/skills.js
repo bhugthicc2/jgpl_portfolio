@@ -1,0 +1,18 @@
+export const skills = [
+  { name: 'Flutter',          icon: 'flutter',             color: '#54C5F8' },
+  { name: 'Dart',             icon: 'dart',                color: '#00B4AB' },
+  { name: 'Material Design',  icon: 'materialdesign',      color: '#757575' },
+  { name: 'Firebase',         icon: 'firebase',            color: '#FFCA28' },
+  { name: 'Firestore',        icon: 'firebase',            color: '#FFCA28' },
+  { name: 'Firebase Auth',    icon: 'firebase',            color: '#FFCA28' },
+  { name: 'Cloud Functions',  icon: 'googlecloud',         color: '#4285F4' },
+  { name: 'Git',              icon: 'git',                 color: '#F05032' },
+  { name: 'GitHub',           icon: 'github',              color: '#181717' },
+  { name: 'VS Code',          icon: 'visualstudiocode',    color: '#007ACC' },
+  { name: 'Figma',            icon: 'figma',               color: '#F24E1E' },
+  { name: 'REST APIs',        icon: 'fastapi',             color: '#009688' },
+  { name: 'AES Encryption',   icon: 'letsencrypt',         color: '#003A70' },
+  { name: 'SQL',              icon: 'mysql',               color: '#4479A1' },
+  { name: 'Photoshop',        icon: 'adobephotoshop',      color: '#31A8FF' },
+  { name: 'Illustrator',      icon: 'adobeillustrator',    color: '#FF9A00' },
+];

@@ -1,0 +1,118 @@
+/* ── Scroll reveal ───────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered children */
+.reveal-children > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal-children.visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-children.visible > *:nth-child(1) {
+  transition-delay: 0.05s;
+}
+.reveal-children.visible > *:nth-child(2) {
+  transition-delay: 0.12s;
+}
+.reveal-children.visible > *:nth-child(3) {
+  transition-delay: 0.19s;
+}
+.reveal-children.visible > *:nth-child(4) {
+  transition-delay: 0.26s;
+}
+.reveal-children.visible > *:nth-child(5) {
+  transition-delay: 0.33s;
+}
+.reveal-children.visible > *:nth-child(6) {
+  transition-delay: 0.4s;
+}
+
+/* ── Role text fade/slide ─────────────────────────────────────── */
+.role-text {
+  display: inline-block;
+  font-size: var(--text-subtitle);
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 2.5px;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+.role-text.fade-out {
+  opacity: 0;
+  transform: translateY(6px);
+}
+.role-text.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Avatar frame ─────────────────────────────────────────────── */
+.avatar-frame {
+  border-radius: 50%;
+  background: var(--base);
+  box-shadow: var(--shadow-raised-lg);
+  padding: 10px;
+  flex-shrink: 0;
+}
+.avatar-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: var(--shadow-inset);
+  overflow: hidden;
+}
+.avatar-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* ── Page load fade-in ───────────────────────────────────────── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-up {
+  animation: fadeUp 0.7s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+.fade-up-1 {
+  animation-delay: 0.1s;
+}
+.fade-up-2 {
+  animation-delay: 0.2s;
+}
+.fade-up-3 {
+  animation-delay: 0.3s;
+}
+.fade-up-4 {
+  animation-delay: 0.4s;
+}
+.fade-up-5 {
+  animation-delay: 0.5s;
+}
+.fade-up-6 {
+  animation-delay: 0.6s;
+}

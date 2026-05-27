@@ -1,0 +1,91 @@
+/* ── Tablet ───────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  :root {
+    --text-display: 38px;
+    --text-heading: 28px;
+    --padding-desktop: var(--padding-tablet);
+    --section-gap: 64px;
+  }
+
+  #top-nav {
+    padding: 0 var(--padding-tablet);
+  }
+  .nav-drawer {
+    padding: 0 var(--padding-tablet) 20px;
+  }
+  .nav-links {
+    display: none;
+  }
+  .nav-hamburger {
+    display: flex;
+  }
+}
+
+/* ── Mobile ───────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  :root {
+    --text-display: 32px;
+    --text-heading: 22px;
+    --padding-desktop: var(--padding-mobile);
+    --section-gap: 48px;
+  }
+
+  #top-nav {
+    padding: 0 var(--padding-mobile);
+  }
+  .nav-drawer {
+    padding: 0 var(--padding-mobile) 20px;
+  }
+
+  /* Home section stacks */
+  .home-layout {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .home-info {
+    align-items: center;
+    text-align: center;
+  }
+  .home-info .btn-row {
+    justify-content: center;
+  }
+  .home-info .neu-divider {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Avatar smaller */
+  .avatar-frame {
+    width: 200px !important;
+    height: 200px !important;
+  }
+
+  /* About stacks */
+  .about-layout {
+    flex-direction: column;
+  }
+
+  /* Skills grid: 3 columns on mobile */
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  /* Projects: 1 column */
+  .projects-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Experience stacks */
+  .exp-card-inner {
+    flex-direction: column;
+  }
+  .exp-image-col {
+    width: 100% !important;
+    height: 180px;
+  }
+
+  /* Contact stacks */
+  .contact-layout {
+    flex-direction: column;
+  }
+}

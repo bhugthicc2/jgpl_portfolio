@@ -1,0 +1,65 @@
+body {
+  font-family: var(--font);
+  background: var(--base);
+  color: var(--foreground);
+  font-size: var(--text-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Section shell ───────────────────────────────────────────── */
+.section {
+  padding: var(--section-gap) var(--padding-desktop);
+}
+
+/* Section heading ─────────────────────────────────────────── */
+.section-heading {
+  margin-bottom: 36px;
+}
+
+.section-heading h2 {
+  font-size: var(--text-heading);
+  font-weight: 800;
+  color: var(--dark);
+  letter-spacing: -0.3px;
+  line-height: 1.15;
+}
+
+.section-heading .subtitle {
+  font-size: var(--text-body);
+  color: var(--muted);
+  margin-top: 10px;
+}
+
+/* Neu divider ─────────────────────────────────────────────── */
+.neu-divider {
+  width: 48px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--accent);
+  margin: 10px 0 8px;
+  box-shadow:
+    2px 2px 4px var(--dark-shadow),
+    -2px -2px 4px var(--light-shadow);
+}
+
+/* Scrollbar ───────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--base);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--dark-shadow);
+  border-radius: var(--radius-pill);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Selection ───────────────────────────────────────────────── */
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
