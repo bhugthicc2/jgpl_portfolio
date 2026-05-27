@@ -1,0 +1,110 @@
+/* ── Contact layout ─────────────────────────────────────────── */
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.contact-description {
+  color: var(--muted);
+  line-height: 1.75;
+  margin-bottom: 18px;
+}
+
+.contact-social-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.contact-social-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--base);
+  border-radius: var(--radius-md);
+  /* box-shadow: var(--shadow-raised-sm); */
+  padding: 12px 14px;
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-fast);
+}
+
+.contact-social-card:hover {
+  box-shadow: var(--shadow-inset-sm);
+}
+
+.contact-social-icon {
+  color: var(--accent);
+}
+
+.contact-social-text {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.contact-social-label {
+  font-size: var(--text-xs);
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+}
+
+.contact-social-value {
+  color: var(--dark);
+  font-size: var(--text-body);
+  font-weight: 600;
+  word-break: break-word;
+}
+
+/* ── Contact form ───────────────────────────────────────────── */
+
+.contact-form {
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contact-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contact-label {
+  font-size: var(--text-xs);
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+}
+
+.contact-field input,
+.contact-field textarea {
+  width: 100%;
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  background: var(--base);
+  color: var(--foreground);
+  /* border: 1px solid rgba(163, 177, 198, 0.3); */
+  box-shadow: inset 3px 3px 3px var(--dark-shadow), 
+  inset -3px -3px 3px var(--light-shadow);
+}
+
+.contact-field textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+
+.contact-field input:focus,
+.contact-field textarea:focus {
+  outline: none;
+  border-color: rgba(108, 142, 191, 0.65);
+}

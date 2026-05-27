@@ -62,28 +62,6 @@
   transform: translateY(0);
 }
 
-/* ── Avatar frame ─────────────────────────────────────────────── */
-.avatar-frame {
-  border-radius: 50%;
-  background: var(--base);
-  box-shadow: var(--shadow-raised-lg);
-  padding: 10px;
-  flex-shrink: 0;
-}
-.avatar-inner {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  box-shadow: var(--shadow-inset);
-  overflow: hidden;
-}
-.avatar-inner img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-}
-
 /* ── Page load fade-in ───────────────────────────────────────── */
 @keyframes fadeUp {
   from {

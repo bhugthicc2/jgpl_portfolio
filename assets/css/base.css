@@ -1,3 +1,44 @@
+/* ── Fonts ───────────────────────────────────────── */
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/Poppins/Poppins-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/Poppins/Poppins-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/Poppins/Poppins-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/Poppins/Poppins-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/Poppins/Poppins-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+html {
+  font-family: var(--font);
+}
+
 body {
   font-family: var(--font);
   background: var(--base);
@@ -7,9 +48,16 @@ body {
   overflow-x: hidden;
 }
 
+/* Layout shell ─────────────────────────────────────────────── */
+/* .container {
+  width: min(1100px, 100%);
+  margin-inline: auto;
+} */
+
 /* Section shell ───────────────────────────────────────────── */
 .section {
   padding: var(--section-gap) var(--padding-desktop);
+  scroll-margin-top: var(--scroll-offset);
 }
 
 /* Section heading ─────────────────────────────────────────── */
@@ -43,19 +91,60 @@ body {
     -2px -2px 4px var(--light-shadow);
 }
 
-/* Scrollbar ───────────────────────────────────────────────── */
+/* ── Neumorphic Scrollbar ─────────────────────────────────── */
+
+/* 1. Base width container */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 14px; /* Slightly widened to make the 3D indentation visible */
 }
+
+/* 2. Inset / Sunken Track Frame */
 ::-webkit-scrollbar-track {
   background: var(--base);
+  
+  /* Replicates your exact 3px inset box-shadow parameters: */
+  background-image: 
+    /* Inset dark shadow (Top-Left: 3px blur/spread) */
+    linear-gradient(to right, var(--dark-shadow) 3px, transparent 3px),
+    linear-gradient(to bottom, var(--dark-shadow) 3px, transparent 3px),
+    
+    /* Inset light shadow (Bottom-Right: -3px blur/spread) */
+    linear-gradient(to left, var(--light-shadow) 3px, transparent 3px),
+    linear-gradient(to top, var(--light-shadow) 3px, transparent 3px);
 }
+
+/* 3. Raised / Floating Thumb Pill */
 ::-webkit-scrollbar-thumb {
-  background: var(--dark-shadow);
+  background: var(--base);
   border-radius: var(--radius-pill);
+  
+  /* Creates a faux 3D ridge effect using a dual-gradient overlay */
+  background-image: 
+    linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, transparent 50%), 
+    linear-gradient(315deg, rgba(0, 0, 0, 0.08) 0%, transparent 50%);
+  
+  /* Standard borders act as padding to let the inset track breathe around the pill */
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  
+  /* Simulates a floating drop-shadow outline around the thumb node */
+  box-shadow: 
+    -1px -1px 3px var(--light-shadow), 
+    1px 1px 3px var(--dark-shadow);
 }
+
+/* 4. Interactive Hover & Active states */
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent);
+  /* Shifts toward your theme's interactive accent highlight */
+  background-image: 
+    linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, transparent 50%), 
+    linear-gradient(to bottom, var(--accent), var(--accent));
+}
+
+::-webkit-scrollbar-thumb:active {
+  /* Converts the thumb into an inset pressed look when dragged */
+  background-image: linear-gradient(to bottom, var(--dark-shadow), var(--base));
+  box-shadow: none;
 }
 
 /* Selection ───────────────────────────────────────────────── */

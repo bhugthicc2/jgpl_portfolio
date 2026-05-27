@@ -3,14 +3,12 @@ export const education = [
     degree:      'Bachelor of Science in Computer Science',
     school:      'JRMSU Katipunan Campus',
     period:      '2022 - Present',
-    description: 'Focused on software engineering, mobile development, and systems design.',
     logo:        'assets/images/schools/university.png',
   },
   {
     degree:      'Senior High School — TVL (CSS) Strand',
     school:      'Cogon National High School',
     period:      '2020 - 2022',
-    description: 'Science, Technology, Engineering, and Mathematics strand.',
     logo:        'assets/images/schools/shs.png',
   },
   {

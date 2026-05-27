@@ -3,15 +3,17 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  height: var(--nav-height);
   background: var(--base);
-  box-shadow:
-    -6px -6px 20px var(--light-shadow),
-    6px 6px 20px var(--dark-shadow);
+  border-bottom: 1px solid rgba(163, 177, 198, 0.25);
+}
+
+.nav-container {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: var(--nav-height);
   padding: 0 var(--padding-desktop);
-  gap: 0;
 }
 
 /* ── Logo ────────────────────────────────────────────────────── */
@@ -23,12 +25,12 @@
   text-decoration: none;
 }
 .nav-logo img {
-  height: 32px;
-  width: 32px;
+  height: 40px;
+
 }
 .nav-logo span {
   font-size: 20px;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--dark);
   letter-spacing: 0.5px;
 }
@@ -40,8 +42,9 @@
 /* ── Desktop links ───────────────────────────────────────────── */
 .nav-links {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 4px;
+  gap: 12px;
 }
 
 .nav-link {
@@ -75,7 +78,7 @@
 .nav-link:hover,
 .nav-link.active {
   color: var(--accent);
-  box-shadow: var(--shadow-inset-sm);
+  box-shadow: var(--shadow-inset);
 }
 .nav-link:hover::after,
 .nav-link.active::after {

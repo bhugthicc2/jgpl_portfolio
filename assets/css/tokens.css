@@ -1,62 +1,59 @@
 :root {
   /* Colors ─────────────────────────────────────────────── */
-  --base:          #E0E5EC;
-  --light-shadow:  #FFFFFF;
-  --dark-shadow:   #A3B1C6;
-  --foreground:    #31456A;
-  --accent:        #6C8EBF;
-  --dark:          #1e2f4d;
-  --muted:         #4a5e7a;
-  --mid:           #31456A;
-  --success:       #4CAF82;
-  --error:         #E57373;
+  --base: #e0e5ec;
+  --light-shadow: #ffffff;
+  --dark-shadow: #a3b1c6;
+  --foreground: #31456a;
+  --accent: #6c8ebf;
+  --dark: #1e2f4d;
+  --muted: #4a5e7a;
+  --mid: #31456a;
+  --success: #4caf82;
+  --error: #e57373;
 
   /* Neumorphic Shadows ──────────────────────────────────── */
   --shadow-raised:
-    -6px -6px 18px var(--light-shadow),
-     6px  6px 18px var(--dark-shadow);
+    -6px -6px 18px var(--light-shadow), 6px 6px 18px var(--dark-shadow);
   --shadow-inset:
-     4px  4px 10px var(--dark-shadow),
-    -4px -4px 10px var(--light-shadow);
+    4px 4px 10px var(--dark-shadow), -4px -4px 10px var(--light-shadow);
   --shadow-raised-sm:
-    -4px -4px 10px var(--light-shadow),
-     4px  4px 10px var(--dark-shadow);
+    -4px -4px 10px var(--light-shadow), 4px 4px 10px var(--dark-shadow);
   --shadow-inset-sm:
-     2px  2px  6px var(--dark-shadow),
-    -2px -2px  6px var(--light-shadow);
+    2px 2px 6px var(--dark-shadow), -2px -2px 6px var(--light-shadow);
   --shadow-raised-lg:
-    -12px -12px 30px var(--light-shadow),
-      12px  12px 30px var(--dark-shadow);
+    -12px -12px 30px var(--light-shadow), 12px 12px 30px var(--dark-shadow);
 
   /* Spacing ─────────────────────────────────────────────── */
-  --padding-desktop: 120px;
-  --padding-tablet:  48px;
-  --padding-mobile:  20px;
-  --section-gap:     80px;
+  --padding-desktop: 200px;
+  --padding-tablet: 48px;
+  --padding-mobile: 20px;
+  --section-gap: 80px;
 
   /* Typography ──────────────────────────────────────────── */
-  --font:           'Poppins', sans-serif;
-  --text-display:   42px;
-  --text-heading:   32px;
-  --text-subtitle:  13px;
-  --text-body:      14px;
-  --text-sm:        12px;
-  --text-xs:        11px;
+  --font: "Poppins", sans-serif;
+  --text-display: 42px;
+  --text-heading: 32px;
+  --text-subtitle: 13px;
+  --text-body: 14px;
+  --text-sm: 12px;
+  --text-xs: 11px;
 
   /* Border Radius ───────────────────────────────────────── */
-  --radius-xl:   24px;
-  --radius-lg:   20px;
-  --radius-md:   16px;
-  --radius-sm:   12px;
-  --radius-xs:   10px;
-  --radius-tag:   8px;
+  --radius-xl: 24px;
+  --radius-lg: 20px;
+  --radius-md: 16px;
+  --radius-sm: 12px;
+  --radius-xs: 10px;
+  --radius-tag: 8px;
   --radius-pill: 999px;
 
   /* Transitions ─────────────────────────────────────────── */
-  --transition:        all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-fast:   all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow:   all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 
   /* Nav ─────────────────────────────────────────────────── */
   --nav-height: 68px;
+  /* scroll offset */
+  --scroll-offset: calc(var(--nav-height));
 }

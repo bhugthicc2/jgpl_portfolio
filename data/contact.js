@@ -1,0 +1,26 @@
+export const contactData = {
+  heading: "Get in Touch",
+  description:
+    "Open to freelance opportunities. If you have a project, collaboration, or role in mind, send me a message and I will get back to you.",
+  receiverEmail: "gapoljesie23@gmail.com",
+  socials: [
+    {
+      label: "Email",
+      value: "gapoljesie23@gmail.com",
+      href: "mailto:gapoljesie23@gmail.com",
+      icon: "email",
+    },
+    {
+      label: "GitHub",
+      value: "github.com/bhugthicc2",
+      href: "https://github.com/bhugthicc2",
+      icon: "github",
+    },
+    {
+      label: "Facebook",
+      value: "facebook.com/jesieperasgapol",
+      href: "https://facebook.com/jesieperasgapol",
+      icon: "facebook",
+    },
+  ],
+};
