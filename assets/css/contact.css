@@ -93,9 +93,18 @@
   padding: 12px 14px;
   background: var(--base);
   color: var(--foreground);
-  /* border: 1px solid rgba(163, 177, 198, 0.3); */
-  box-shadow: inset 3px 3px 3px var(--dark-shadow), 
-  inset -3px -3px 3px var(--light-shadow);
+
+  /* ── SAFARI & iOS FIXES ────────────────────────────────── */
+  -webkit-appearance: none; /* Strips native iOS glass/bubble rendering */
+  appearance: none; /* Modern standard reset */
+  border: none; /* Erases Safari's default gray stroke */
+  outline: none; /* Prevents default iOS blue focus ring */
+  font-family: inherit; /* Forces iOS to use your web font instead of System UI */
+  /* ──────────────────────────────────────────────────────── */
+
+  box-shadow:
+    inset 3px 3px 3px var(--dark-shadow),
+    inset -3px -3px 3px var(--light-shadow);
 }
 
 .contact-field textarea {

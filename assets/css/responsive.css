@@ -73,6 +73,10 @@
     max-width: 100%;
   }
 
+  .avatar-inner::after {
+    display: none !important;
+  }
+
   /* Avatar smaller */
   .avatar-frame {
     width: 200px !important;
@@ -85,11 +89,11 @@
     gap: 40px;
   }
 
-  .about-timeline{
-order: 2;
+  .about-timeline {
+    order: 2;
   }
-.about-content {
-   order: 1;
+  .about-content {
+    order: 1;
   }
   .about-timeline,
   .about-content {
@@ -112,8 +116,6 @@ order: 2;
     /* border-radius: 0; */
     /* padding: 0; */
   }
-
- 
 
   /* Projects: 1 column */
   .projects-grid {
