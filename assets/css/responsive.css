@@ -131,6 +131,10 @@
   .exp-row:nth-child(even) .exp-content-col {
     order: initial;
   }
+
+  .exp-content-col {
+    padding: 18px 18px;
+  }
   .exp-media {
     min-height: 200px;
   }

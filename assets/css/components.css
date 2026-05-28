@@ -42,10 +42,12 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
+  transition: transform var(--motion-fast) var(--ease-out-soft);
 }
 
 .btn-icon {
   flex-shrink: 0;
+  transition: transform var(--motion-fast) var(--ease-out-soft);
 }
 
 .btn::after {
@@ -60,6 +62,15 @@
 }
 .btn:hover::after {
   width: 20px;
+}
+
+.btn:hover .btn-content,
+.icon-box:hover .btn-icon {
+  transform: translateY(-1px);
+}
+
+.btn:hover .btn-icon {
+  transform: translateX(2px);
 }
 
 .btn-ghost {
