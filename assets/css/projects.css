@@ -16,12 +16,10 @@
   box-shadow: var(--shadow-raised);
   overflow: hidden;
   transition: var(--transition);
-
 }
 
 .project-card:hover {
   box-shadow: var(--shadow-raised-lg);
-
 }
 
 .project-image-wrap {
@@ -30,7 +28,7 @@
   margin: 10px;
   aspect-ratio: 16 / 8;
   background: var(--base);
-  box-shadow: var(--shadow-inset);
+  /* box-shadow: var(--shadow-inset); */
   overflow: hidden;
   cursor: pointer;
 }
@@ -47,8 +45,9 @@
   color: var(--foreground);
   display: grid;
   place-items: center;
-  box-shadow: inset 3px 3px 3px var(--dark-shadow), 
-              inset -3px -3px 3px var(--light-shadow);
+  box-shadow:
+    inset 3px 3px 3px var(--dark-shadow),
+    inset -3px -3px 3px var(--light-shadow);
   z-index: 2;
   text-decoration: none;
   transition: var(--transition-fast);
@@ -68,15 +67,13 @@
   height: 18px;
 }
 
-
-
 /* 2. Default image state with transition added */
 .project-image-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  
+
   /* Smoothly animates the scale change over 0.4 seconds */
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }

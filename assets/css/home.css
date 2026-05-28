@@ -1,7 +1,7 @@
 /* ── Hero Section ────────────────────────────────── */
 
 .section.hero-section {
-  min-height: 80vh;
+  min-height: 90vh;
   display: flex;
   align-items: center;
 
@@ -33,7 +33,7 @@
 
 .hero-title {
   font-size: clamp(1rem, 4vw, 3rem);
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.05;
   color: var(--dark);
   letter-spacing: -1px;
@@ -61,6 +61,20 @@
   gap: 16px;
   margin-top: 32px;
   flex-wrap: wrap;
+}
+
+.social-links {
+  margin-top: 48px;
+}
+
+.social-links-label {
+  font-weight: 500;
+}
+
+.social-links-icon-container {
+  margin-top: 12px;
+  gap: 24px;
+  display: flex;
 }
 
 /* ── Avatar ─────────────────────────────────────── */

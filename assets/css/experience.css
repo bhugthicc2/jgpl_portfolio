@@ -36,7 +36,12 @@
   object-fit: cover;
   display: block;
   border-radius: var(--radius-md);
+  /* transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); */
 }
+
+/* .exp-media:hover img {
+  transform: scale(1.06);
+} */
 
 .exp-content-col {
   background: var(--base);

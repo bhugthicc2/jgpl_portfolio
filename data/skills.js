@@ -6,7 +6,6 @@ export const skills = [
   { name: "Flutter", slug: "flutter" },
   { name: "Android Studio", slug: "androidstudio" },
   { name: "Kotlin", slug: "kotlin" },
-
   { name: "Firebase", slug: "firebase" },
   { name: "SQL", slug: "mysql" },
   { name: "Git", slug: "git" },
