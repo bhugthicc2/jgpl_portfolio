@@ -41,6 +41,10 @@
     padding: 0 var(--padding-mobile) 20px;
   }
 
+  .nav-container {
+    padding: 0;
+  }
+
   /* Home section stacks */
   /* ── Hero Section ───────────────────────────── */
 
@@ -62,6 +66,18 @@
 
   .hero-actions {
     justify-content: center;
+    align-items: center;
+  }
+
+  .btn {
+    margin: 0;
+    padding: 8px 12px;
+  }
+
+  /* Change .btn-text to span */
+  #btn-txt {
+    font-size: var(--text-xs);
+    line-height: 1.2;
   }
 
   .hero-content .neu-divider {
@@ -117,9 +133,26 @@
     /* padding: 0; */
   }
 
+  .project-title {
+    font-size: var(--text-subtitle);
+  }
+
+  .project-body {
+    padding: 18px 20px 22px;
+  }
+
   /* Projects: 1 column */
   .projects-grid {
     grid-template-columns: 1fr !important;
+  }
+
+  .project-desc {
+    font-size: var(--text-sm);
+  }
+
+  .tag {
+    font-size: 9px;
+    padding: 4px 8px;
   }
 
   /* Experience stacks */

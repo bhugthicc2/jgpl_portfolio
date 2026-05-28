@@ -12,8 +12,7 @@ const HOME_HASH = "#home";
 function getScrollOffset() {
   const styles = getComputedStyle(document.documentElement);
   const navHeight = parseFloat(styles.getPropertyValue("--nav-height")) || 68;
-  // const extra = 8;
-  return navHeight - 30;//scroll offset
+  return navHeight;
 }
 
 function isHomeHref(href) {
@@ -92,8 +91,8 @@ if (hamburger && drawer) {
 homeLinks.forEach(link => {
   link.addEventListener("click", e => {
     e.preventDefault();
-    goHome();
     closeDrawer();
+    window.requestAnimationFrame(() => goHome());
   });
 });
 
@@ -109,8 +108,8 @@ navLinks.forEach(link => {
     if (!section) return;
 
     e.preventDefault();
-    scrollToSection(section);
     closeDrawer();
+    window.requestAnimationFrame(() => scrollToSection(section));
   });
 });
 
