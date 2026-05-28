@@ -1,9 +1,13 @@
 /* ── Hero Section ────────────────────────────────── */
 
-.hero-section {
+.section.hero-section {
   min-height: 80vh;
   display: flex;
   align-items: center;
+
+  /* Explicitly overwrite the vertical padding directly */
+  /* padding-top: 20px;
+  padding-bottom: 0px; */
 }
 
 .hero-container {
@@ -85,7 +89,6 @@
   box-shadow:
     14px 14px 28px var(--dark-shadow),
     -14px -14px 28px var(--light-shadow);
-
 }
 
 /* Inner inset layer */
@@ -97,11 +100,10 @@
   overflow: hidden;
   position: relative;
   z-index: 7;
-   /* Raised shadow */
-   box-shadow:
-   -8px -8px 16px var(--light-shadow),
-   8px 8px 16px var(--dark-shadow);
- 
+  /* Raised shadow */
+  box-shadow:
+    -8px -8px 16px var(--light-shadow),
+    8px 8px 16px var(--dark-shadow);
 }
 
 /* Inset shadow as its own layer (z-index: 6) */
@@ -113,7 +115,6 @@
   z-index: 7;
   pointer-events: none;
   box-shadow:
-  
     inset 5px 5px 10px var(--dark-shadow),
     inset -10px -10px 20px var(--light-shadow);
 }
@@ -123,29 +124,30 @@
   content: "";
   position: absolute;
   /* Extended to -50% to give the gradient runway to slide without getting cut off */
-  inset: -50%; 
+  inset: -50%;
   border-radius: 50%;
   z-index: 999;
   pointer-events: none;
   background: linear-gradient(
     115deg,
-    rgba(255, 255, 255, 0) 35%,       
-    rgba(255, 255, 255, 0.15) 43%,   
-    rgba(255, 255, 255, 0.65) 50%,   
-    rgba(255, 255, 255, 0.15) 57%,   
-    rgba(255, 255, 255, 0) 65%        
+    rgba(255, 255, 255, 0) 35%,
+    rgba(255, 255, 255, 0.15) 43%,
+    rgba(255, 255, 255, 0.65) 50%,
+    rgba(255, 255, 255, 0.15) 57%,
+    rgba(255, 255, 255, 0) 65%
   );
-  
-  mix-blend-mode: overlay; 
-  filter: blur(3px); 
-  
+
+  mix-blend-mode: overlay;
+  filter: blur(3px);
+
   /* DEFAULT STATE: Resting slightly off-center to the left */
   transform: translateX(-20%) translateY(15%) rotate(-15deg);
   opacity: 1; /* Slightly softer ambient reflection while resting */
-  
+
   /* Smoothly animates the slide out AND the slide back when unhovered */
-  transition: transform 2s cubic-bezier(0.22, 1, 0.36, 1), 
-              opacity 2s ease;
+  transition:
+    transform 2s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 2s ease;
 }
 
 /* HOVER STATE: Slides across to the right side */
