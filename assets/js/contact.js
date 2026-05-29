@@ -1,4 +1,22 @@
-import { contactData } from "../../data/contact.js";
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { contactData as firebaseContactData } from "../../data/contact.js";
+
+
+//hehe ayg saba dawg
+  const firebaseConfig = {
+    apiKey: "AIzaSyB8jyKWD7UQMHut3dC6hhn4Zyscao1SrKI",
+    authDomain: "jgpl-portfolio.firebaseapp.com",
+    projectId: "jgpl-portfolio",
+    storageBucket: "jgpl-portfolio.firebasestorage.app",
+    messagingSenderId: "909600723116",
+    appId: "1:909600723116:web:9267ab12f50f5f2161cf09"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 const ICONS = {
   phone: `<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M6.62 10.79a15.1 15.1 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.11.37 2.3.56 3.58.56a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.28.19 2.47.56 3.58a1 1 0 0 1-.24 1.01l-2.2 2.2Z"/></svg>`,
@@ -13,10 +31,11 @@ function renderContactSocials() {
   const list = document.getElementById("contact-social-list");
   if (!heading || !desc || !list) return;
 
-  heading.textContent = contactData.heading;
-  desc.textContent = contactData.description;
+  // Swap out contactData for firebaseContactData here:
+  heading.textContent = firebaseContactData.heading;
+  desc.textContent = firebaseContactData.description;
 
-  list.innerHTML = contactData.socials
+  list.innerHTML = firebaseContactData.socials
     .map(
       social => `
       <a
@@ -43,19 +62,59 @@ function setupContactForm() {
   const messageInput = document.getElementById("contact-message");
   if (!form || !nameInput || !emailInput || !messageInput) return;
 
-  form.addEventListener("submit", e => {
+  // Find or create a status container for visual validation messages
+  let statusText = document.getElementById("form-status");
+  if (!statusText) {
+    statusText = document.createElement("p");
+    statusText.id = "form-status";
+    statusText.style.marginTop = "14px";
+    statusText.style.fontSize = "14px";
+    statusText.style.fontWeight = "500";
+    form.appendChild(statusText);
+  }
+
+  const submitBtn = form.querySelector('button[type="submit"]');
+
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const name = nameInput.value.trim();
     const email = emailInput.value.trim();
     const message = messageInput.value.trim();
+    
     if (!name || !email || !message) return;
 
-    const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
-    );
-    window.location.href = `mailto:${contactData.receiverEmail}?subject=${subject}&body=${body}`;
+    // Toggle submitting processing state
+    submitBtn.disabled = true;
+    const originalBtnText = submitBtn.textContent;
+    submitBtn.textContent = "Sending...";
+    statusText.textContent = "Processing message...";
+    statusText.style.color = "var(--muted)";
+    statusText.removeAttribute("hidden");
+
+    try {
+      // Send the content directly to your Firebase collection
+      await addDoc(collection(db, "messages"), {
+        name: name,
+        email: email,
+        message: message,
+        createdAt: serverTimestamp() // Safe remote system time marker
+      });
+
+      // Clear layout and provide success affirmation
+      statusText.textContent = "Message sent successfully! I will reach out soon.";
+      statusText.style.color = "#10b981"; // Success Green
+      form.reset();
+
+    } catch (error) {
+      console.error("Firebase submit runtime error: ", error);
+      statusText.textContent = "Unable to connect. Please try again later.";
+      statusText.style.color = "#ef4444"; // Error Red
+    } finally {
+      // Re-enable interactive elements
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalBtnText;
+    }
   });
 }
 
