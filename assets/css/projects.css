@@ -18,9 +18,9 @@
   transition: var(--transition);
 }
 
-.project-card:hover {
+/* .project-card:hover {
   box-shadow: var(--shadow-raised-lg);
-}
+} */
 
 .project-image-wrap {
   position: relative;
@@ -81,7 +81,7 @@
 /* 3. Hover state that triggers the zoom/pop effect */
 .project-image-wrap:hover img {
   /* Scales the image up by 7% (adjust 1.07 to change the zoom intensity) */
-  transform: scale(1.06);
+  transform: scale(1.03);
 }
 
 .project-body {

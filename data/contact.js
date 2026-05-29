@@ -5,6 +5,12 @@ export const contactData = {
   receiverEmail: "gapoljesie23@gmail.com",
   socials: [
     {
+      label: "Contact",
+      value: "+639657722489",
+     href: "tel:+639657722489",
+      icon: "phone",
+    },
+    {
       label: "Email",
       value: "gapoljesie23@gmail.com",
       href: "mailto:gapoljesie23@gmail.com",

@@ -28,6 +28,12 @@
   border-radius: var(--radius-lg);
   overflow: hidden;
   padding: 10px;
+  transform: rotate(1deg) translateZ(0);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.exp-media:hover {
+  transform: rotate(0) translateZ(0);
 }
 
 .exp-media img {
