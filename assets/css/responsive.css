@@ -169,6 +169,19 @@
     min-height: 200px;
   }
 
+  .exp-role {
+    font-size: var(--text-heading) - 5;
+  }
+
+  .exp-company {
+    font-size: var(--text-xs);
+  }
+
+  .exp-bullets li {
+    font-size: var(--text-xs);
+    line-height: 1.5;
+  }
+
   /* Contact stacks */
   .contact-layout {
     grid-template-columns: 1fr;

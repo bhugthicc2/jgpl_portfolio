@@ -44,7 +44,7 @@
   --radius-md: 16px;
   --radius-sm: 12px;
   --radius-xs: 10px;
-  --radius-tag: 8px;
+  --radius-tag: 999px;
   --radius-pill: 999px;
 
   /* Transitions ─────────────────────────────────────────── */
