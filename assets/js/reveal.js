@@ -5,6 +5,7 @@ const revealSelectors = [
   ".about-timeline > .timeline-entry",
   ".skills-grid > *",
   ".projects-grid > *",
+  ".github-heatmap",
   ".experience-list > *",
   ".contact-info-col > *",
   ".contact-form-col",

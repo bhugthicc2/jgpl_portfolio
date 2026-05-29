@@ -111,10 +111,61 @@
   margin-top: 8px;
 }
 
+.github-heatmap {
+  margin-top: 36px;
+}
+
+.github-heatmap-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 16px;
+}
+
+.github-heatmap-header h3 {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--dark);
+  line-height: 1.2;
+}
+
+.github-heatmap-link {
+  flex: 0 0 auto;
+}
+
+.github-heatmap-frame {
+  border-radius: var(--radius-xs);
+  background: var(--base);
+  box-shadow: var(--shadow-inset);
+  padding: clamp(10px, 2vw, 18px);
+  overflow: hidden;
+}
+
+.github-heatmap-frame img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-xs);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .project-card,
   .project-card:hover {
     transition: none;
     transform: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .github-heatmap {
+    margin-top: 28px;
+  }
+
+  .github-heatmap-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
   }
 }
