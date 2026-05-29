@@ -82,7 +82,7 @@ export const experience = [
     techStack: ["Adobe Illustrator", "Mockups", "Visual Identity"],
   }, 
   {
-    role: "Contributed Graduation Graphics during Senior High School",
+    role: "Contributed Graduation Graphics during Senior High",
     company: "Cogon National High School",
     period: "2022",
     location: "Brgy. Cogon, Dipolog City, Philippines",
