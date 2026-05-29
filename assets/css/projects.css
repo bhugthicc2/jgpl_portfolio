@@ -27,7 +27,7 @@
   border-radius: var(--radius-sm);
   /* margin: 10px; */
   aspect-ratio: 16 / 8;
-  background: var(--base);
+  background: var(--light-shadow);
   /* box-shadow: var(--shadow-inset); */
   overflow: hidden;
   cursor: pointer;
