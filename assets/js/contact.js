@@ -5,6 +5,7 @@ import { contactData as firebaseContactData } from "../../data/contact.js";
 
 
 //hehe ayg saba dawg
+//yati ka ayaw nig hilabti ba
   const firebaseConfig = {
     apiKey: "AIzaSyB8jyKWD7UQMHut3dC6hhn4Zyscao1SrKI",
     authDomain: "jgpl-portfolio.firebaseapp.com",
@@ -12,8 +13,8 @@ import { contactData as firebaseContactData } from "../../data/contact.js";
     storageBucket: "jgpl-portfolio.firebasestorage.app",
     messagingSenderId: "909600723116",
     appId: "1:909600723116:web:9267ab12f50f5f2161cf09"
-  };
-
+};
+  //pahawa dire mananap
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
