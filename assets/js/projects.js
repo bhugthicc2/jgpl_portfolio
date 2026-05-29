@@ -186,29 +186,47 @@ function setupProjectModal() {
     return project.image ? [project.image] : [];
   };
 
-  const renderMetricPills = metrics => {
-    if (!Array.isArray(metrics) || !metrics.length) return "";
 
-    return `
-      <div class="modal-metric-row">
-        ${metrics
-          .map(
-            metric => `
-              <span class="modal-metric-pill">
-                <span>${metric.label}</span>
-                <strong>${metric.value}</strong>
-              </span>
-            `
-          )
-          .join("")}
+
+const renderCodeSnippet = codeSnippet => {
+  if (!codeSnippet) return "";
+
+  // 1. First, safely escape the HTML
+  let content = escapeHtml(codeSnippet);
+
+  // 2. Temporarily extract comments to protect them from other regex matchers
+  const savedComments = [];
+  content = content.replace(/(\/\/.*)/g, (match) => {
+    savedComments.push(match);
+    // Insert a unique placeholder token
+    return `__COMMENT_PLACEHOLDER_${savedComments.length - 1}__`;
+  });
+
+  // 3. Apply color tokens safely to the code logic only
+  content = content
+    // Keywords & Types: void, int, const, final, static, return, for, class, import, Uint8List
+    .replace(/\b(void|int|const|final|static|return|for|class|import|Uint8List)\b/g, '<span class="code-keyword">$1</span>')
+    // Hex and Numerical Values: 8, 16, 0xFF, 0x03, 4
+    .replace(/\b(0x[0-9a-fA-F]+|\d+)\b/g, '<span class="code-number">$1</span>')
+    // Function Names and built-in operations
+    .replace(/\b(_dynamicShiftRows|lfsrMixColumns|invLfsrMixColumns|_xtime|_gfMult|setAll)\b/g, '<span class="code-function">$1</span>');
+
+  // 4. Restore the comments, wrapping each cleanly in a single uniform span element
+  content = content.replace(/__COMMENT_PLACEHOLDER_(\d+)__/g, (match, index) => {
+    return `<span class="code-comment">${savedComments[index]}</span>`;
+  });
+
+  // 5. Output the exact same layout shell structure
+  return `<div class="modal-code-window">
+      <div class="code-window-header">
+        <span class="control-dot close"></span>
+        <span class="control-dot minimize"></span>
+        <span class="control-dot maximize"></span>
+        <span class="code-window-title">Source Code (Dart)</span>
       </div>
-    `;
-  };
-
-  const renderCodeSnippet = codeSnippet =>
-    codeSnippet
-      ? `<pre class="modal-code-block"><code>${escapeHtml(codeSnippet)}</code></pre>`
-      : "";
+      <pre class="modal-code-block"><code>${content}</code></pre>
+    </div>`;
+};
 
   const renderParagraphs = content =>
     (Array.isArray(content) ? content : [content])
@@ -234,6 +252,8 @@ function setupProjectModal() {
       </div>
     `;
   };
+
+  
 
   const renderLabeledParagraphs = items => {
     if (!Array.isArray(items) || !items.length) return "";
@@ -342,10 +362,10 @@ function setupProjectModal() {
     modalTags.innerHTML = renderPlainTags(project?.techStack || []);
     modalMeta.innerHTML = renderProjectMeta(project);
     modalMeta.hidden = hasRichCaseStudy;
-    modalDetails.innerHTML =
-      hasRichCaseStudy
-        ? `${renderMetricPills(caseStudy.metrics)}${renderCaseSections(caseStudy.sections)}`
-        : "";
+   modalDetails.innerHTML =
+  hasRichCaseStudy
+    ? `${renderCaseSections(caseStudy.sections)}`
+    : "";
     modalActions.innerHTML = renderModalActions(project);
     modalActions.hidden = !modalActions.innerHTML.trim();
   };
@@ -455,6 +475,8 @@ function setupProjectModal() {
     if (e.key === "ArrowLeft") goPrev();
   });
 }
+
+
 
 renderProjects();
 setupProjectModal();

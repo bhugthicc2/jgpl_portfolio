@@ -2,11 +2,7 @@ const cvmsCaseStudy = {
   title: 'Cloud-Based Vehicle Monitoring System',
   subtitle:
     'A dual-platform Flutter application replacing manual MVPS checks at JRMSU-Katipunan Campus with enhanced AES-128 encrypted QR identification and cloud-synchronized administrative oversight.',
-  metrics: [
-    { label: 'Role', value: 'Solo Developer (Full-Stack)' },
-    { label: 'Duration', value: '3 Weeks' },
-    { label: 'Platforms', value: 'Windows Desktop & Android Mobile' },
-  ],
+
   sections: [
     {
       title: 'System Architecture',

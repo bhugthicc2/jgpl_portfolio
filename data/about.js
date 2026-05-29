@@ -6,7 +6,7 @@ export const aboutDetails = [
   },
   {
     label: "Location",
-    value: "Dipolog City, Philippines (Available for Remote)",
+    value: "Dipolog City, Philippines(Available for Remote)",
     icon: "location",
   },
  

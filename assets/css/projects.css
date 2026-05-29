@@ -169,3 +169,35 @@
     gap: 10px;
   }
 }
+
+.modal-summary,
+.modal-case-section p,
+.modal-note p,
+.modal-highlight-list li {
+  text-align: justify;
+}
+
+/* ── Code Syntax Colors ─────────────────────────────────── */
+.modal-code-block {
+  background-color: #0f172a !important; /* Elegant deep space backdrop */
+  color: #cbd5e1 !important; /* Fallback off-white for plain variables */
+}
+
+/* Syntax Highlighting Colors */
+.code-comment {
+  color: #64748b; /* Soft muted slate gray for code annotations */
+  font-style: italic;
+}
+
+.code-keyword {
+  color: #f472b6; /* Soft pink for language reserved words */
+  font-weight: 600;
+}
+
+.code-number {
+  color: #fb923c; /* Bright crisp orange for calculations and constants */
+}
+
+.code-function {
+  color: #38bdf8; /* Sky blue to cleanly isolate operations and logic keys */
+}

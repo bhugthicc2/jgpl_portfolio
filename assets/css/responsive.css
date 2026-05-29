@@ -38,7 +38,7 @@
     padding: 0 var(--padding-mobile);
   }
   .nav-drawer {
-    padding: 0 var(--padding-mobile) 20px;
+    padding: 0 0 0;
   }
 
   .nav-container {
@@ -64,6 +64,13 @@
     order: 1;
   }
 
+  .hero-title {
+    font-size: clamp(2rem, 4vw, 4rem);
+    line-height: 1.05;
+    color: var(--dark);
+    letter-spacing: 1.1px;
+  }
+
   .hero-actions {
     justify-content: center;
     align-items: center;
@@ -87,6 +94,10 @@
 
   .hero-description {
     max-width: 100%;
+  }
+
+  .fade-up-6 {
+    display: none;
   }
 
   .avatar-inner::after {
@@ -117,6 +128,25 @@
     width: 100%;
   }
 
+  .about-details {
+    gap: 0px;
+    margin-top: 10px;
+  }
+
+  .about-bio {
+    font-size: var(--text-sm);
+    line-height: 1.5;
+  }
+
+  .detail-value {
+    font-size: var(--text-sm);
+  }
+
+  .about-bio strong {
+    color: var(--foreground);
+    font-weight: 600;
+  }
+
   .about-stats {
     justify-content: center;
   }
@@ -135,15 +165,56 @@
   }
 
   .project-body {
-    padding: 18px 20px 22px;
+    padding: 14px 16px 18px;
+  }
+
+  .modal-panel-media {
+    padding: 7px;
   }
 
   .modal-case-info {
     order: 2;
+    padding: clamp(12px, 2.4vw, 18px);
+
+    /* 1. Allow the aside to expand naturally without a height restriction */
+    max-height: none;
+
+    /* 2. Prevent the internal vertical scrollbar */
+    overflow-y: visible;
+  }
+
+  .modal-gallery-header {
+    order: 2;
+  }
+
+  .modal-media-wrap {
+    order: 1;
   }
 
   .modal-case-gallery {
     order: 1;
+  }
+
+  .modal-summary,
+  .modal-case-section p,
+  .modal-note p,
+  .modal-highlight-list li {
+    text-align: justify;
+
+    /* Enables clean word breaks to prevent wide gaps between words */
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    font-size: var(--text-sm);
+  }
+
+  .modal-metric-pill span {
+    font-size: var(--text-xs);
+    letter-spacing: 0.5px;
+  }
+
+  .modal-metric-pill strong {
+    font-size: var(--text-xs);
   }
 
   /* Projects: 1 column */
@@ -171,7 +242,7 @@
   }
 
   .exp-content-col {
-    padding: 18px 18px;
+    padding: 12px 12px;
   }
   .exp-media {
     min-height: 200px;
@@ -193,5 +264,25 @@
   /* Contact stacks */
   .contact-layout {
     grid-template-columns: 1fr;
+  }
+
+  .contact-description {
+    font-size: var(--text-sm);
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+  }
+
+  .contact-social-value {
+    font-size: var(--text-sm);
+  }
+
+  .footer-social {
+    display: none;
+  }
+
+  .footer-text {
+    font-size: var(--text-sm);
   }
 }
