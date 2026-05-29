@@ -1,14 +1,14 @@
 export const aboutDetails = [
   {
-    label: "Location",
-    value: "Dipolog City, Philippines",
-    icon: "location",
+    label: "Current Role",
+    value: "Available for Full-Time Opportunities",
+    icon: "user-check",
   },
   {
-    label: "Email",
-    value: "gapoljesie23@gmail.com",
-    href: "mailto:gapoljesie23@gmail.com",
-    icon: "email",
+    label: "Location",
+    value: "Dipolog City, Philippines (Available for Remote)",
+    icon: "location",
   },
+ 
   
 ];

@@ -1,7 +1,7 @@
 export const projects = [
   {
     title:       'Cloud-based Vehicle Monitoring System - Desktop App',
-    description: 'A Flutter-based vehicle monitoring system using QR codes and Firebase Firestore for real-time tracking and AES-encrypted payloads.',
+    description: 'A Flutter-based vehicle monitoring system using QR codes and Firebase Firestore for real-time tracking and AES-encrypted payloads designed for JRMSU - KC CDRRMSU.',
     image: 'assets/images/projects/cvms/cover.png',
     images:      [
       'assets/images/projects/cvms/cvms4.png',
@@ -22,7 +22,7 @@ export const projects = [
   },
   {
     title:       'Cloud-based Vehicle Monitoring System - Mobile App',
-    description: 'A Flutter-based vehicle monitoring system using QR codes and Firebase Firestore for real-time tracking and AES-encrypted payloads.',
+    description: 'A Flutter-based vehicle monitoring system using QR codes and Firebase Firestore for real-time tracking and AES-encrypted payloads designed for JRMSU - KC CDRRMSU.',
     image: 'assets/images/projects/cvms/mobile/cover.png',
     images:      [
       'assets/images/projects/cvms/mobile/splash.png',
