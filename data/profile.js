@@ -1,5 +1,5 @@
 export const profile = {
-  name:     'Jesie C. Gapol',
+  name:     'Jesie P. Gapol',
   tagline:  ['FLUTTER DEVELOPER', 'GRAPHIC ARTIST'],
   bio:      `I'm a <strong>Computer Science student</strong> specialising in
              <strong>Flutter cross-platform development</strong> and

@@ -7,7 +7,7 @@ export const skills = [
   { name: "Android Studio", slug: "androidstudio" },
   { name: "Kotlin", slug: "kotlin" },
   { name: "Firebase", slug: "firebase" },
-  { name: "SQL", slug: "mysql" },
+  { name: "MySQL", slug: "mysql" },
   { name: "Git", slug: "git" },
   { name: "GitHub", slug: "github" },
   { name: "VS Code", slug: "vscode" },

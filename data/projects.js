@@ -42,7 +42,7 @@ export const projects = [
   },  {
     title:       'JRMSU CCS Dean\'s Office Visitors Log System - Mobile App',
     description: 'A QR-based visitor registration and log system for JRMSU CCS, built with Flutter and Firebase for real-time visitor tracking.',
-    image: 'assets/images/projects/cvls/cover.png',
+    image: 'assets/images/projects/cvls/mobile/mobile-cover.png',
     images: [
       'assets/images/projects/cvls/mobile/splash.png',
       'assets/images/projects/cvls/mobile/auth.png',
@@ -106,7 +106,7 @@ export const projects = [
   },
   {
     title:       'JRMSU K Sports Fest 2026 — Shirt Design I',
-    description: 'Official shirt design for JRMSU K Sports Fest 2026, created using Adobe Photoshop and Illustrator.',
+    description: 'Shirt design contribution for JRMSU K Sports Fest 2026, created using Adobe Photoshop and Illustrator.',
     image:       'assets/images/projects/graphics/design1.png',
     images:      [
       'assets/images/projects/graphics/design1.png',
@@ -117,22 +117,9 @@ export const projects = [
     githubUrl:   null,
     liveUrl:     null,
   },
-  // {
-  //   title:       'JRMSU K Sports Fest 2026 — Shirt Design II',
-  //   description: 'Second variant of the official shirt design for JRMSU K Sports Fest 2026.',
-  //   image:       'assets/images/projects/graphics/design2.png',
-  //   images:      [
-  //     'assets/images/projects/graphics/design1.png',
-  //     'assets/images/projects/graphics/design2.png',
-  //     'assets/images/projects/graphics/design3.png',
-  //   ],
-  //   techStack:   ['Adobe Photoshop', 'Adobe Illustrator'],
-  //   githubUrl:   null,
-  //   liveUrl:     null,
-  // },
   {
     title:       'JRMSU K Sports Fest 2026 — CCS Basketball Jersey Design',
-    description: 'Third variant of the official shirt design for JRMSU K Sports Fest 2026.',
+    description: 'Basketball Jersey Design for JRMSU - KC CCS during Sports Fest 2026.',
     image:       'assets/images/projects/graphics/design3.png',
     images:      [
       'assets/images/projects/graphics/design1.png',

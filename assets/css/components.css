@@ -90,7 +90,7 @@
 
 .btn-filled {
   background: var(--accent);
-  color: #fff;
+  color: var(--light-shadow);
   box-shadow: var(--shadow-raised);
   border: 2px solid var(--base);
 }
