@@ -75,12 +75,12 @@ function setupContactForm() {
 
   const submitBtn = form.querySelector('button[type="submit"]');
 
-  // --- REGEX & FORMATTING UTILITIES ---
+
   const nameRegex = /^[a-zA-Z\s'.]+$/;
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const repetitivePattern = /(.)\1{3,}/;
 
-  // Converts text to Title Case (e.g., "juan dela cruz" -> "Juan Dela Cruz")
+  // Converts text to Title Case 
   const toTitleCase = (str) => {
     return str
       .toLowerCase()
@@ -89,7 +89,7 @@ function setupContactForm() {
       .join(' ');
   };
 
-  // Converts text to Sentence Case (Capitalizes first letter of sentences)
+  // Converts text to Sentence Case 
   const toSentenceCase = (str) => {
     if (!str) return "";
     return str
