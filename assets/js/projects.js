@@ -49,6 +49,19 @@ function renderTags(techStack = []) {
   return `<div class="tag-row project-tags">${tags}</div>`;
 }
 
+function renderPlainTags(techStack = []) {
+  return techStack.map(t => `<span class="tag">${t}</span>`).join("");
+}
+
+function escapeHtml(value = "") {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
 function renderProjects() {
   const grid = document.getElementById("projects-grid");
   if (!grid) return;
@@ -108,6 +121,11 @@ function setupProjectModal() {
   const modal = document.getElementById("project-modal");
   const modalImage = document.getElementById("project-modal-image");
   const modalTitle = document.getElementById("project-modal-title");
+  const modalSummary = document.getElementById("project-modal-summary");
+  const modalTags = document.getElementById("project-modal-tags");
+  const modalMeta = document.getElementById("project-modal-meta");
+  const modalDetails = document.getElementById("project-modal-details");
+  const modalActions = document.getElementById("project-modal-actions");
   const modalCounter = document.getElementById("project-modal-counter");
   const prevBtn = document.getElementById("project-modal-prev");
   const nextBtn = document.getElementById("project-modal-next");
@@ -117,6 +135,11 @@ function setupProjectModal() {
     !modal ||
     !modalImage ||
     !modalTitle ||
+    !modalSummary ||
+    !modalTags ||
+    !modalMeta ||
+    !modalDetails ||
+    !modalActions ||
     !modalCounter ||
     !prevBtn ||
     !nextBtn ||
@@ -137,6 +160,170 @@ function setupProjectModal() {
     if (!project) return [];
     if (Array.isArray(project.images) && project.images.length) return project.images;
     return project.image ? [project.image] : [];
+  };
+
+  const renderMetricPills = metrics => {
+    if (!Array.isArray(metrics) || !metrics.length) return "";
+
+    return `
+      <div class="modal-metric-row">
+        ${metrics
+          .map(
+            metric => `
+              <span class="modal-metric-pill">
+                <span>${metric.label}</span>
+                <strong>${metric.value}</strong>
+              </span>
+            `
+          )
+          .join("")}
+      </div>
+    `;
+  };
+
+  const renderCodeSnippet = codeSnippet =>
+    codeSnippet
+      ? `<pre class="modal-code-block"><code>${escapeHtml(codeSnippet)}</code></pre>`
+      : "";
+
+  const renderParagraphs = content =>
+    (Array.isArray(content) ? content : [content])
+      .filter(Boolean)
+      .map(item => `<p>${item}</p>`)
+      .join("");
+
+  const renderNotes = items => {
+    if (!Array.isArray(items) || !items.length) return "";
+
+    return `
+      <div class="modal-two-col">
+        ${items
+          .map(
+            item => `
+              <article class="modal-note">
+                <span>${item.label}</span>
+                <p>${item.content}</p>
+              </article>
+            `
+          )
+          .join("")}
+      </div>
+    `;
+  };
+
+  const renderLabeledParagraphs = items => {
+    if (!Array.isArray(items) || !items.length) return "";
+
+    return items
+      .map(item => `<p><strong>${item.label}:</strong> ${item.content}</p>`)
+      .join("");
+  };
+
+  const renderList = items => {
+    if (!Array.isArray(items) || !items.length) return "";
+
+    return `
+      <ul class="modal-highlight-list">
+        ${items.map(item => `<li>${item}</li>`).join("")}
+      </ul>
+    `;
+  };
+
+  const renderCaseSectionBody = section => {
+    const renderers = {
+      paragraphs: () => renderParagraphs(section.content),
+      notes: () => renderNotes(section.items),
+      "labeled-paragraphs": () => renderLabeledParagraphs(section.items),
+      list: () => renderList(section.items),
+    };
+
+    const render = renderers[section.type] || renderers.paragraphs;
+    return `${render()}${renderCodeSnippet(section.codeSnippet)}`;
+  };
+
+  const renderCaseSections = sections => {
+    if (!Array.isArray(sections) || !sections.length) return "";
+
+    return sections
+      .map(
+        section => `
+          <section class="modal-case-section">
+            <h4>${section.title}</h4>
+            ${renderCaseSectionBody(section)}
+          </section>
+        `
+      )
+      .join("");
+  };
+
+  const getProjectMeta = project => {
+    const meta = Array.isArray(project?.meta) ? [...project.meta] : [];
+
+    if (project?.type) {
+      meta.push({ label: "Type", value: project.type });
+    }
+
+    if (project?.role) {
+      meta.push({ label: "Role", value: project.role });
+    }
+
+    meta.push({
+      label: "Gallery",
+      value: `${activeImages.length} screen${activeImages.length === 1 ? "" : "s"}`,
+    });
+
+    return meta;
+  };
+
+  const renderProjectMeta = project =>
+    getProjectMeta(project)
+      .map(
+        item => `
+          <div class="modal-meta-item">
+            <span>${item.label}</span>
+            <strong>${item.value}</strong>
+          </div>
+        `
+      )
+      .join("");
+
+  const renderModalActions = project => {
+    const links = [];
+
+    if (project?.githubUrl) {
+      links.push(
+        `<a href="${project.githubUrl}" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">GitHub</a>`
+      );
+    }
+
+    if (project?.liveUrl) {
+      links.push(`
+        <a href="${project.liveUrl}" class="txt-btn live-demo-btn" target="_blank" rel="noopener noreferrer">
+          Live Demo
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true" focusable="false">
+            <path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      `);
+    }
+
+    return links.join("");
+  };
+
+  const renderCaseStudy = project => {
+    const caseStudy = project?.caseStudy || {};
+    const hasRichCaseStudy = Object.keys(caseStudy).length > 0;
+    modalTitle.textContent = caseStudy.title || project?.title || "Project Preview";
+    modalSummary.textContent = caseStudy.subtitle || project?.description || "";
+    modalTags.innerHTML = renderPlainTags(project?.techStack || []);
+    modalMeta.innerHTML = renderProjectMeta(project);
+    modalMeta.hidden = hasRichCaseStudy;
+    modalDetails.innerHTML =
+      hasRichCaseStudy
+        ? `${renderMetricPills(caseStudy.metrics)}${renderCaseSections(caseStudy.sections)}`
+        : "";
+    modalActions.innerHTML = renderModalActions(project);
+    modalActions.hidden = !modalActions.innerHTML.trim();
   };
 
   const updateNavState = () => {
@@ -176,7 +363,7 @@ function setupProjectModal() {
     activeIndex = 0;
     activeTitle = project?.title || "Project Preview";
     lastTrigger = trigger || null;
-    modalTitle.textContent = activeTitle;
+    renderCaseStudy(project);
     renderImage();
 
     modal.hidden = false;
@@ -191,6 +378,13 @@ function setupProjectModal() {
     modalImage.removeAttribute("src");
     modalImage.classList.remove("is-animating", "from-next", "from-prev");
     modalTitle.textContent = "";
+    modalSummary.textContent = "";
+    modalTags.innerHTML = "";
+    modalMeta.innerHTML = "";
+    modalMeta.hidden = false;
+    modalDetails.innerHTML = "";
+    modalActions.innerHTML = "";
+    modalActions.hidden = false;
     modalCounter.textContent = "0 / 0";
     activeImages = [];
     activeIndex = 0;

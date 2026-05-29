@@ -1,3 +1,89 @@
+const cvmsCaseStudy = {
+  title: 'Cloud-Based Vehicle Monitoring System',
+  subtitle:
+    'A multi-platform Flutter application managing vehicle access control and administrative fleet operations through AES-128 encrypted QR identification.',
+  metrics: [
+    { label: 'Role', value: 'Solo Developer (Full-Stack)' },
+    { label: 'Duration', value: '3 Weeks' },
+    { label: 'Platforms', value: 'Windows Desktop & Android Mobile' },
+  ],
+  sections: [
+    {
+      title: 'System Architecture',
+      type: 'paragraphs',
+      content: [
+        'The system utilizes a single Flutter codebase deployed to two platforms. The Windows Desktop App serves as the Admin Portal for managing vehicle records, monitoring onsite/offsite status, handling violations, and generating reports. The Android Mobile App is used by personnel on the ground to scan AES-128 encrypted QR codes embedded in MVP stickers affixed to vehicles — identifying them and logging entry or exit events synced instantly through Cloud Firestore.',
+      ],
+    },
+    {
+      title: 'Problem & Goal',
+      type: 'notes',
+      items: [
+        {
+          label: 'Problem',
+          content:
+            'Manual vehicle identification and access control relied on visual checks and paper logs, creating security vulnerabilities, inconsistent record-keeping, and no centralized visibility into vehicle presence or violations.',
+        },
+        {
+          label: 'Goal',
+          content:
+            'To build a secure, automated cross-platform ecosystem where vehicles are identified via encrypted QR codes, access events are logged without human error, and administrators have full real-time oversight of fleet status, violations, and sanctions.',
+        },
+      ],
+    },
+    {
+      title: 'Technical Challenge & Solution',
+      type: 'labeled-paragraphs',
+      items: [
+        {
+          label: 'Challenge',
+          content:
+            'QR codes embedded in publicly exposed MVP stickers needed to carry vehicle identity data without being spoofable or readable by unauthorized parties, since any phone camera could potentially scan them.',
+        },
+        {
+          label: 'Solution',
+          content:
+            'I implemented AES-128 encryption on all QR code payloads before generation. The mobile app decrypts the scanned data at runtime using a secured key, ensuring that raw QR content is unreadable outside the system. Only authenticated personnel with the mobile app can resolve a scan to a valid vehicle identity.',
+        },
+      ],
+      codeSnippet: `import 'package:encrypt/encrypt.dart' as encrypt;
+
+String encryptVehiclePayload(String plainText) {
+  final key = encrypt.Key.fromUtf8(const String.fromEnvironment('AES_KEY'));
+  final iv = encrypt.IV.fromSecureRandom(16);
+  final encrypter = encrypt.Encrypter(
+    encrypt.AES(key, mode: encrypt.AESMode.cbc),
+  );
+
+  final encrypted = encrypter.encrypt(plainText, iv: iv);
+  // Prefix IV to ciphertext for decryption on scan
+  return '\${iv.base64}:\${encrypted.base64}';
+}
+
+String decryptVehiclePayload(String cipherText) {
+  final key = encrypt.Key.fromUtf8(const String.fromEnvironment('AES_KEY'));
+  final parts = cipherText.split(':');
+  final iv = encrypt.IV.fromBase64(parts[0]);
+  final encrypter = encrypt.Encrypter(
+    encrypt.AES(key, mode: encrypt.AESMode.cbc),
+  );
+
+  return encrypter.decrypt64(parts[1], iv: iv);
+}`,
+    },
+    {
+      title: 'Key Features Developed',
+      type: 'list',
+      items: [
+        'AES-128 Encrypted QR Generation: Vehicle identity data is encrypted before being embedded into MVP sticker QR codes, preventing unauthorized identification or spoofing.',
+        'Mobile QR Scanner: Android app decrypts and resolves scanned stickers to vehicle records in real time, logging access and entry/exit events to Firestore.',
+        'Admin Portal: Full vehicle record management, onsite/offsite monitoring, violation tracking, sanction management, and report generation from a centralized Windows desktop interface.',
+        'Role-Based Access Control: Secure authentication separating ground personnel (mobile scanners) from administrators (desktop portal).',
+      ],
+    },
+  ],
+};
+
 export const projects = [
   {
     title:       'Cloud-based Vehicle Monitoring System - Desktop App',
@@ -16,7 +102,8 @@ export const projects = [
       'assets/images/projects/cvms/cvms1.png',
       'assets/images/projects/cvms/cvms6.png',
     ],
-    techStack:   ['Flutter', 'Firebase', 'AES', 'Firestore'],
+    techStack:   ['Flutter', 'Dart', 'Firebase Auth', 'Cloud Firestore', 'Provider', 'AES'],
+    caseStudy:   cvmsCaseStudy,
     githubUrl:   null,
     liveUrl:     null,
   },
@@ -33,7 +120,8 @@ export const projects = [
       'assets/images/projects/cvms/mobile/drawer.png',
 
     ],
-    techStack:   ['Flutter', 'Firebase', 'AES', 'Firestore'],
+    techStack:   ['Flutter', 'Dart', 'Firebase Auth', 'Cloud Firestore', 'Provider', 'AES'],
+    caseStudy:   cvmsCaseStudy,
     githubUrl:   null,
     liveUrl:     null,
   },

@@ -6,7 +6,7 @@ export const contactData = {
   socials: [
     {
       label: "Contact",
-      value: "+639657722489",
+      value: "+63 965 772 2489",
      href: "tel:+639657722489",
       icon: "phone",
     },

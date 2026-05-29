@@ -138,6 +138,14 @@
     padding: 18px 20px 22px;
   }
 
+  .modal-case-info {
+    order: 2;
+  }
+
+  .modal-case-gallery {
+    order: 1;
+  }
+
   /* Projects: 1 column */
   .projects-grid {
     grid-template-columns: 1fr !important;
