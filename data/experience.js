@@ -1,15 +1,16 @@
 export const experience = [
   {
-    role: "Flutter Developer Intern (OJT)",
+    role: "On-job-Training (OJT) ",
     company: "Jose Rizal Memorial State University - Katipunan Campus",
     period: "Jun 2025 - Aug 2025",
     location: "Katipunan, Philippines",
     image: "assets/images/experiences/practicum/practicum1.jpg",
     bullets: [
-      "Built and maintained Flutter mobile features used in production.",
+      "Built mobile and desktop application.",
       "Integrated Firebase Auth and Firestore for real-time data handling.",
       "Collaborated with the design team to implement pixel-perfect UI components.",
       "Participated in code reviews and agile sprint planning.",
+       "Doing office works.",
     ],
     techStack: ["Flutter", "Firebase", "Dart", "Figma"],
   },
