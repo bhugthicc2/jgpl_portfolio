@@ -37,6 +37,30 @@
   flex-direction: column;
 }
 
+.txt-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--accent);
+
+  text-decoration: none;
+  font-weight: 500;
+
+  transition: color 0.2s ease;
+}
+
+.txt-btn:hover {
+  color: var(--dark-shadow);
+}
+
+.txt-btn svg {
+  transition: transform 0.2s ease;
+}
+
+.txt-btn:hover svg {
+  transform: translate(2px, -2px);
+}
+
 .btn-content {
   display: inline-flex;
   align-items: center;

@@ -81,5 +81,19 @@ export const experience = [
     ],
     techStack: ["Adobe Illustrator", "Mockups", "Visual Identity"],
   }, 
+  {
+    role: "Contributed Graduation Graphics during Senior High School",
+    company: "Cogon National High School",
+    period: "2022",
+    location: "Brgy. Cogon, Dipolog City, Philippines",
+    image: "assets/images/experiences/contests/logo_making2.jpg",
+    bullets: [
+      "Awarded 2nd Place out of competitive entries for delivering a compelling and meaningful municipal visual identity.",
+      "Refined the final visual variant based on committee and panel feedback.",
+      "Prepared high-resolution export assets and vector deliverables for official production use.",
+      "Maintained strict consistency across various event identity touchpoints and promotional materials."
+    ],
+    techStack: ["Adobe Illustrator", "Mockups", "Visual Identity"],
+  }, 
   
 ];

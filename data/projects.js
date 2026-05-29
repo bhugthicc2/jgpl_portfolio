@@ -92,7 +92,7 @@ export const projects = [
     ],
     techStack:   ['HTML', 'CSS', 'JavaScript'],
     githubUrl:   null,
-    liveUrl:     null,
+    liveUrl:     'https://jesiegapol23.github.io/gapzgraphix',
   },
   {
     title:       'Records Management System - Desktop App',
