@@ -191,6 +191,7 @@ export const projects = [
       'assets/images/projects/cvms/mobile/vehicle_info_scrolled.png',
       'assets/images/projects/cvms/mobile/report_modal.png',
       'assets/images/projects/cvms/mobile/choose_violation.png',
+      'assets/images/projects/cvms/mobile/activity.png',
       'assets/images/projects/cvms/mobile/drawer.png',
 
     ],
