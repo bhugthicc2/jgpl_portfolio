@@ -1,7 +1,7 @@
 const cvmsCaseStudy = {
   title: 'Cloud-Based Vehicle Monitoring System',
   subtitle:
-    'A multi-platform Flutter application managing vehicle access control and administrative fleet operations through AES-128 encrypted QR identification.',
+    'A dual-platform Flutter application replacing manual MVPS checks at JRMSU-Katipunan Campus with enhanced AES-128 encrypted QR identification and cloud-synchronized administrative oversight.',
   metrics: [
     { label: 'Role', value: 'Solo Developer (Full-Stack)' },
     { label: 'Duration', value: '3 Weeks' },
@@ -12,7 +12,7 @@ const cvmsCaseStudy = {
       title: 'System Architecture',
       type: 'paragraphs',
       content: [
-        'The system utilizes a single Flutter codebase deployed to two platforms. The Windows Desktop App serves as the Admin Portal for managing vehicle records, monitoring onsite/offsite status, handling violations, and generating reports. The Android Mobile App is used by personnel on the ground to scan AES-128 encrypted QR codes embedded in MVP stickers affixed to vehicles — identifying them and logging entry or exit events synced instantly through Cloud Firestore.',
+        'The system is built across two separate Flutter codebases sharing a Cloud Firestore backend. The Windows Desktop App is used by CDRRMSU administrators to register vehicles, generate Enhanced AES-128 encrypted QR codes embedded into Motor Vehicle Pass Stickers (MVPS), manage violations and sanctions, and export PDF/CSV reports. The Android Mobile App is used by security personnel at campus entry and exit points to scan MVPS stickers, decrypt the QR payload at runtime to identify the vehicle, log access events to Firestore in real time, and file violation reports — fully replacing the paper-based "No MVPS, No Entry" visual inspection.',
       ],
     },
     {
@@ -22,12 +22,12 @@ const cvmsCaseStudy = {
         {
           label: 'Problem',
           content:
-            'Manual vehicle identification and access control relied on visual checks and paper logs, creating security vulnerabilities, inconsistent record-keeping, and no centralized visibility into vehicle presence or violations.',
+            'JRMSU-Katipunan Campus enforces strict vehicle registration under CDRRMSU policy, requiring all vehicles to carry a physical Motor Vehicle Pass Sticker. However, the entire workflow — from registration to gate verification — was fully manual: paper logbooks, visual sticker checks by guards, and no real-time data. This created long gate queues, inconsistent enforcement, zero audit trail, and no administrative visibility into which vehicles were on campus at any given time.',
         },
         {
           label: 'Goal',
           content:
-            'To build a secure, automated cross-platform ecosystem where vehicles are identified via encrypted QR codes, access events are logged without human error, and administrators have full real-time oversight of fleet status, violations, and sanctions.',
+            'To digitize and secure the existing CDRRMSU vehicle policy by replacing visual sticker checks with encrypted QR scanning and paper records with a cloud-synchronized system — providing security personnel with instant mobile verification and administrators with real-time monitoring, violation management, and exportable reports; all on ordinary, resource-constrained mobile hardware.',
         },
       ],
     },
@@ -38,47 +38,69 @@ const cvmsCaseStudy = {
         {
           label: 'Challenge',
           content:
-            'QR codes embedded in publicly exposed MVP stickers needed to carry vehicle identity data without being spoofable or readable by unauthorized parties, since any phone camera could potentially scan them.',
+            'Standard AES-128 (10 rounds with full GF(2⁸) MixColumns) introduced unnecessary latency when encrypting and decrypting small, fixed-size Vehicle ID payloads for real-time QR gate scanning on mobile hardware. Simultaneously, MVPS stickers are physically and permanently exposed in public — any smartphone camera can scan them — making weak or plain QR encoding a direct spoofing and cloning risk.',
         },
         {
           label: 'Solution',
           content:
-            'I implemented AES-128 encryption on all QR code payloads before generation. The mobile app decrypts the scanned data at runtime using a secured key, ensuring that raw QR content is unreadable outside the system. Only authenticated personnel with the mobile app can resolve a scan to a valid vehicle identity.',
+            'A custom EnhancedAES128 class was implemented in Dart with three targeted modifications to standard AES-128. First, rounds were reduced from 10 to 8, lowering encrypt/decrypt latency for real-time scanning. Second, a Dynamic ShiftRows mechanism derives each row\'s shift amount from the actual key bytes (key[0..2] & 0x03) instead of fixed static offsets, making the permutation key-dependent and increasing resistance to pattern-based attacks. Third, the standard GF(2⁸) MixColumns was replaced with an LFSR-inspired GF(2⁸) mixing function using XOR and xtime operations — preserving the avalanche effect and full invertibility while eliminating the costlier finite field multiplications.',
         },
       ],
-      codeSnippet: `import 'package:encrypt/encrypt.dart' as encrypt;
+      codeSnippet: `// EnhancedAES128 — core modifications (Dart)
+// 1. Reduced to 8 rounds (vs. standard 10)
+static const int numRounds = 8;
 
-String encryptVehiclePayload(String plainText) {
-  final key = encrypt.Key.fromUtf8(const String.fromEnvironment('AES_KEY'));
-  final iv = encrypt.IV.fromSecureRandom(16);
-  final encrypter = encrypt.Encrypter(
-    encrypt.AES(key, mode: encrypt.AESMode.cbc),
-  );
-
-  final encrypted = encrypter.encrypt(plainText, iv: iv);
-  // Prefix IV to ciphertext for decryption on scan
-  return '\${iv.base64}:\${encrypted.base64}';
+// 2. Dynamic ShiftRows: shift amounts from actual key bytes
+void _dynamicShiftRows(Uint8List state) {
+  final shifts = [0, key[0] & 0x03, key[1] & 0x03, key[2] & 0x03];
+  final temp = Uint8List(16);
+  for (int row = 0; row < 4; row++) {
+    for (int col = 0; col < 4; col++) {
+      final fromCol = (col + shifts[row]) % 4;
+      temp[col * 4 + row] = state[fromCol * 4 + row];
+    }
+  }
+  state.setAll(0, temp);
 }
 
-String decryptVehiclePayload(String cipherText) {
-  final key = encrypt.Key.fromUtf8(const String.fromEnvironment('AES_KEY'));
-  final parts = cipherText.split(':');
-  final iv = encrypt.IV.fromBase64(parts[0]);
-  final encrypter = encrypt.Encrypter(
-    encrypt.AES(key, mode: encrypt.AESMode.cbc),
-  );
+// 3. LFSR-inspired MixColumns: XOR + xtime (replaces GF(2^8) multiply)
+void lfsrMixColumns(Uint8List state) {
+  for (int col = 0; col < 4; col++) {
+    final idx = col * 4;
+    final b0 = state[idx], b1 = state[idx+1],
+          b2 = state[idx+2], b3 = state[idx+3];
+    state[idx+0] = (b0 ^ b1) & 0xFF;
+    state[idx+1] = (b1 ^ b2) & 0xFF;
+    state[idx+2] = (b2 ^ b3) & 0xFF;
+    state[idx+3] = (b3 ^ _xtime(b0)) & 0xFF; // GF(2^8) xtime feedback
+  }
+}
 
-  return encrypter.decrypt64(parts[1], iv: iv);
+// Inverse: uses GF(2^8) multiply with inv3 = 0xF6
+void invLfsrMixColumns(Uint8List state) {
+  const int inv3 = 0xF6;
+  for (int col = 0; col < 4; col++) {
+    final idx = col * 4;
+    final b0p = state[idx], b1p = state[idx+1],
+          b2p = state[idx+2], b3p = state[idx+3];
+    final s   = b0p ^ b1p ^ b2p ^ b3p;
+    final b0  = _gfMult(s, inv3) & 0xFF;
+    state[idx+0] = b0;
+    state[idx+1] = (b0p ^ b0) & 0xFF;
+    state[idx+2] = (b1p ^ state[idx+1]) & 0xFF;
+    state[idx+3] = (b2p ^ state[idx+2]) & 0xFF;
+  }
 }`,
     },
     {
       title: 'Key Features Developed',
       type: 'list',
       items: [
-        'AES-128 Encrypted QR Generation: Vehicle identity data is encrypted before being embedded into MVP sticker QR codes, preventing unauthorized identification or spoofing.',
-        'Mobile QR Scanner: Android app decrypts and resolves scanned stickers to vehicle records in real time, logging access and entry/exit events to Firestore.',
-        'Admin Portal: Full vehicle record management, onsite/offsite monitoring, violation tracking, sanction management, and report generation from a centralized Windows desktop interface.',
-        'Role-Based Access Control: Secure authentication separating ground personnel (mobile scanners) from administrators (desktop portal).',
+        'Custom EnhancedAES128 Algorithm: A purpose-built Dart implementation of modified AES-128 with 8-round reduction, key-derived Dynamic ShiftRows, and an LFSR-inspired GF(2⁸) MixColumns — balancing real-time performance with strong cryptographic security on mobile hardware.',
+        'Encrypted MVPS QR Generation: Vehicle identity data is encrypted using EnhancedAES128 on the desktop and embedded into QR codes printed on Motor Vehicle Pass Stickers — raw sticker content is unreadable outside the system.',
+        'Mobile QR Scanner & Access Logging: Security personnel scan MVPS stickers at campus gates; the app decrypts the payload, identifies the vehicle, logs the access event to Firestore in real time, and plays audio scan feedback.',
+        'Violation Reporting: Security personnel file violations directly from a scan result on mobile; CDRRMSU admins review, manage sanctions, and maintain the full violation history on the desktop portal.',
+        'Admin Portal — Records & Reports: Administrators manage vehicle registrations with Philippine province/barangay data support, monitor real-time onsite/offsite vehicle status via Firestore listeners, and export PDF/CSV reports powered by Syncfusion DataGrid and Charts.',
       ],
     },
   ],
@@ -102,7 +124,7 @@ export const projects = [
       'assets/images/projects/cvms/cvms1.png',
       'assets/images/projects/cvms/cvms6.png',
     ],
-    techStack:   ['Flutter', 'Dart', 'Firebase Auth', 'Cloud Firestore', 'Provider', 'AES'],
+    techStack:   ['Flutter', 'Dart', 'Firebase Auth', 'Cloud Firestore', 'Bloc', 'AES'],
     caseStudy:   cvmsCaseStudy,
     githubUrl:   null,
     liveUrl:     null,
@@ -120,7 +142,7 @@ export const projects = [
       'assets/images/projects/cvms/mobile/drawer.png',
 
     ],
-    techStack:   ['Flutter', 'Dart', 'Firebase Auth', 'Cloud Firestore', 'Provider', 'AES'],
+    techStack:   ['Flutter', 'Dart', 'Firebase Auth', 'Cloud Firestore', 'Bloc', 'AES'],
     caseStudy:   cvmsCaseStudy,
     githubUrl:   null,
     liveUrl:     null,
