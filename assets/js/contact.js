@@ -62,7 +62,6 @@ function setupContactForm() {
   const messageInput = document.getElementById("contact-message");
   if (!form || !nameInput || !emailInput || !messageInput) return;
 
-  // Find or create a status container for visual validation messages
   let statusText = document.getElementById("form-status");
   if (!statusText) {
     statusText = document.createElement("p");
@@ -84,7 +83,6 @@ function setupContactForm() {
     
     if (!name || !email || !message) return;
 
-    // Toggle submitting processing state
     submitBtn.disabled = true;
     const originalBtnText = submitBtn.textContent;
     submitBtn.textContent = "Sending...";
@@ -92,26 +90,46 @@ function setupContactForm() {
     statusText.style.color = "var(--muted)";
     statusText.removeAttribute("hidden");
 
+    // 1. Initialize variables for fallback
+    let ipAddress = "Unknown / Blocked by Adblocker";
+    const userAgent = navigator.userAgent; 
+    const windowResolution = `${window.screen.width}x${window.screen.height}`;
+
     try {
-      // Send the content directly to your Firebase collection
+      // 2. Fetch the client's public IP address safely
+      const ipResponse = await fetch("https://api.ipify.org?format=json");
+      if (ipResponse.ok) {
+        const ipData = await ipResponse.json();
+        ipAddress = ipData.ip;
+      }
+    } catch (ipError) {
+      // Handles cases where a user has an aggressive adblocker blocking tracking scripts
+      console.warn("Could not retrieve public IP address:", ipError);
+    }
+
+    try {
+      // 3. Send message payload alongside device metadata to Firestore
       await addDoc(collection(db, "messages"), {
         name: name,
         email: email,
         message: message,
-        createdAt: serverTimestamp() // Safe remote system time marker
+        createdAt: serverTimestamp(),
+        metadata: {
+          ip: ipAddress,
+          deviceAgent: userAgent,
+          screenResolution: windowResolution
+        }
       });
 
-      // Clear layout and provide success affirmation
       statusText.textContent = "Message sent successfully! I will reach out soon.";
-      statusText.style.color = "#10b981"; // Success Green
+      statusText.style.color = "#10b981"; 
       form.reset();
 
     } catch (error) {
       console.error("Firebase submit runtime error: ", error);
       statusText.textContent = "Unable to connect. Please try again later.";
-      statusText.style.color = "#ef4444"; // Error Red
+      statusText.style.color = "#ef4444"; 
     } finally {
-      // Re-enable interactive elements
       submitBtn.disabled = false;
       submitBtn.textContent = originalBtnText;
     }
