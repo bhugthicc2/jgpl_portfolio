@@ -1,8 +1,8 @@
 export const projects = [
   {
-    title:       'Cloud-based Vehicle Monitoring System',
+    title:       'Cloud-based Vehicle Monitoring System - Desktop App',
     description: 'A Flutter-based vehicle monitoring system using QR codes and Firebase Firestore for real-time tracking and AES-encrypted payloads.',
-    image: 'assets/images/projects/cvms/cvms.png',
+    image: 'assets/images/projects/cvms/cover.png',
     images:      [
       'assets/images/projects/cvms/cvms4.png',
       'assets/images/projects/cvms/cvms.png',
@@ -15,17 +15,56 @@ export const projects = [
       'assets/images/projects/cvms/cvms7.png',
       'assets/images/projects/cvms/cvms1.png',
       'assets/images/projects/cvms/cvms6.png',
-      'assets/images/projects/cvms/mobile1.png',
-      'assets/images/projects/cvms/mobile2.png',
     ],
     techStack:   ['Flutter', 'Firebase', 'AES', 'Firestore'],
     githubUrl:   null,
     liveUrl:     null,
   },
   {
+    title:       'Cloud-based Vehicle Monitoring System - Mobile App',
+    description: 'A Flutter-based vehicle monitoring system using QR codes and Firebase Firestore for real-time tracking and AES-encrypted payloads.',
+    image: 'assets/images/projects/cvms/mobile/cover.png',
+    images:      [
+      'assets/images/projects/cvms/mobile/splash.png',
+      'assets/images/projects/cvms/mobile/login.png',
+      'assets/images/projects/cvms/mobile/home.png',
+      'assets/images/projects/cvms/mobile/profile.png',
+      'assets/images/projects/cvms/mobile/scan_entry.png',
+      'assets/images/projects/cvms/mobile/drawer.png',
+
+    ],
+    techStack:   ['Flutter', 'Firebase', 'AES', 'Firestore'],
+    githubUrl:   null,
+    liveUrl:     null,
+  },
+    {
+    title:       'JRMSU CCS Dean\'s Office Visitors Log System - Mobile App',
+    description: 'A QR-based visitor registration and log system for JRMSU CCS, built with Flutter and Firebase for real-time visitor tracking.',
+    image: 'assets/images/projects/cvls/mobile/mobile-cover.png',
+    images: [
+      'assets/images/projects/cvls/mobile/splash.png',
+      'assets/images/projects/cvls/mobile/sign-up.png',
+      'assets/images/projects/cvls/mobile/login.png',
+      'assets/images/projects/cvls/mobile/forgot-pass.png',
+      'assets/images/projects/cvls/mobile/home-open.png',
+      
+      'assets/images/projects/cvls/mobile/sched.png',
+      'assets/images/projects/cvls/mobile/visit-purpose.png',
+      'assets/images/projects/cvls/mobile/scan.png',
+      'assets/images/projects/cvls/mobile/drawer.png',
+      'assets/images/projects/cvls/mobile/about.png',
+      'assets/images/projects/cvls/mobile/info.png',
+      
+      'assets/images/projects/cvls/mobile/logout.png',
+    ],
+    techStack:   ['Flutter', 'Dart', 'Firebase'],
+    githubUrl:   null,
+    liveUrl:     null,
+  },
+  {
     title:       'JRMSU CCS Dean\'s Office Visitors Log System - Desktop App',
     description: 'A QR-based visitor registration and log system for JRMSU CCS, built with Flutter and Firebase for real-time visitor tracking.',
-    image: 'assets/images/projects/cvls/visitors_log.png',
+    image: 'assets/images/projects/cvls/cover.png',
     images:      [
       'assets/images/projects/cvls/visitors_log1.png',
       'assets/images/projects/cvls/visitors_log.png',
@@ -70,23 +109,32 @@ export const projects = [
     githubUrl:   null,
     liveUrl:     null,
   },
-    {
-    title:       'JRMSU CCS Dean\'s Office Visitors Log System - Mobile App',
-    description: 'A QR-based visitor registration and log system for JRMSU CCS, built with Flutter and Firebase for real-time visitor tracking.',
-    image: 'assets/images/projects/cvls/mobile/mobile-cover.png',
-    images: [
-      'assets/images/projects/cvls/mobile/splash.png',
-      'assets/images/projects/cvls/mobile/auth.png',
-      'assets/images/projects/cvls/mobile/auth1.png',
-      'assets/images/projects/cvls/mobile/hours.png',
-      'assets/images/projects/cvls/mobile/entry.png',
-      'assets/images/projects/cvls/mobile/scan.png',
-      'assets/images/projects/cvls/mobile/done.png',
+
+  {
+    title:       'Messenger Clone',
+    description:  'A modern messaging app UI/UX case study inspired by Messenger, featuring onboarding flows, customizable chat themes, authentication screens, notifications, and interactive chat interfaces built with Flutter.',
+    image: 'assets/images/projects/messenger-clone/cover.png',
+    images:      [
+      'assets/images/projects/messenger-clone/login.png',
+      'assets/images/projects/messenger-clone/onboarding-1.png',
+      'assets/images/projects/messenger-clone/gender.png',
+      'assets/images/projects/messenger-clone/birthday.png',
+          'assets/images/projects/messenger-clone/email.png',
+      'assets/images/projects/messenger-clone/password.png',
+        'assets/images/projects/messenger-clone/terms.png',
+      'assets/images/projects/messenger-clone/chats.png',
+      'assets/images/projects/messenger-clone/cool-crew-theme.png',
+      'assets/images/projects/messenger-clone/avatar-theme.png',
+         'assets/images/projects/messenger-clone/theme-selection.png',
+      'assets/images/projects/messenger-clone/chat-info.png',
+      'assets/images/projects/messenger-clone/notifs.png',
+         'assets/images/projects/messenger-clone/menu.png',
     ],
     techStack:   ['Flutter', 'Dart', 'Firebase'],
     githubUrl:   null,
     liveUrl:     null,
   },
+  
   {
     title:       'Storemate - Mobile App',
     description: 'StoreMate is a companion app designed for small shops and convenience stores.',
@@ -105,19 +153,7 @@ export const projects = [
     githubUrl:   null,
     liveUrl:     null,
   },
-  // {
-  //   title:       'JRMSU K Sports Fest 2026 — Shirt Design I',
-  //   description: 'Shirt design contribution for JRMSU K Sports Fest 2026, created using Adobe Photoshop and Illustrator.',
-  //   image:       'assets/images/projects/graphics/design1.png',
-  //   images:      [
-  //     'assets/images/projects/graphics/design1.png',
-  //     'assets/images/projects/graphics/design2.png',
-  //     'assets/images/projects/graphics/design3.png',
-  //   ],
-  //   techStack:   ['Adobe Photoshop', 'Adobe Illustrator'],
-  //   githubUrl:   null,
-  //   liveUrl:     null,
-  // },
+
    {
     title:       'Tarpaulin Design',
     description: 'Designed Tarpaulin layouts using adobe photoshop.',
@@ -130,10 +166,23 @@ export const projects = [
     githubUrl:   null,
     liveUrl:     null,
   },
-  {
-    title:       'JRMSU K Sports Fest 2026 — CCS Basketball Jersey Design',
-    description: 'Basketball Jersey Design for JRMSU - KC CCS during Sports Fest 2026.',
-    image:       'assets/images/projects/graphics/design3.png',
+  // {
+  //   title:       'JRMSU K Sports Fest 2026 — CCS Basketball Jersey Design',
+  //   description: 'Basketball Jersey Design for JRMSU - KC CCS during Sports Fest 2026.',
+  //   image:       'assets/images/projects/graphics/design3.png',
+  //   images:      [
+  //     'assets/images/projects/graphics/design1.png',
+  //     'assets/images/projects/graphics/design2.png',
+  //     'assets/images/projects/graphics/design3.png',
+  //   ],
+  //   techStack:   ['Adobe Photoshop', 'Adobe Illustrator'],
+  //   githubUrl:   null,
+  //   liveUrl:     null,
+  // },
+    {
+    title:       'JRMSU K Sports Fest 2026 — Shirt Design I',
+    description: 'Shirt design contribution for JRMSU K Sports Fest 2026, created using Adobe Photoshop and Illustrator.',
+    image:       'assets/images/projects/graphics/design1.png',
     images:      [
       'assets/images/projects/graphics/design1.png',
       'assets/images/projects/graphics/design2.png',
