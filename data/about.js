@@ -1,8 +1,8 @@
 export const aboutDetails = [
   {
     label: "Current Role",
-    value: "Available for Full-Time Opportunities",
-    icon: "user-check",
+    value: "Available for Full-Time Opportunities", 
+    icon: "user-check", 
   },
   {
     label: "Location",
