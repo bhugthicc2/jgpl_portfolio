@@ -74,22 +74,31 @@ function setupContactForm() {
 
   const submitBtn = form.querySelector('button[type="submit"]');
 
-  form.addEventListener("submit", async (e) => {
+form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const name = nameInput.value.trim();
     const email = emailInput.value.trim();
     const message = messageInput.value.trim();
     
+    // 1. Basic empty check
     if (!name || !email || !message) return;
 
+    // 2. Strict character limit check (Security Layer)
+    if (name.length > 60 || email.length > 100 || message.length > 1000) {
+      statusText.removeAttribute("hidden");
+      statusText.textContent = "Character limit exceeded. Please shorten your entry.";
+      statusText.style.color = "#ef4444";
+      return; // Stop execution immediately, protecting Firebase
+    }
+
+    // Toggle submitting processing state
     submitBtn.disabled = true;
     const originalBtnText = submitBtn.textContent;
     submitBtn.textContent = "Sending...";
     statusText.textContent = "Processing message...";
     statusText.style.color = "var(--muted)";
     statusText.removeAttribute("hidden");
-
     // 1. Initialize variables for fallback
     let ipAddress = "Unknown / Blocked by Adblocker";
     const userAgent = navigator.userAgent; 
