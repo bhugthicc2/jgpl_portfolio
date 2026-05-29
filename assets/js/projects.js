@@ -5,7 +5,31 @@ function renderLinks(project) {
 
   if (project.githubUrl) {
     links.push(
-      `<a href="${project.githubUrl}" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">GitHub</a>`
+     `<a 
+  href="${project.githubUrl}" 
+  class="txt-btn live-demo-btn" 
+  target="_blank" 
+  rel="noopener noreferrer"
+>
+  Github
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    width="20" 
+    height="20" 
+    fill="none" 
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <path 
+      d="M7 17L17 7M9 7h8v8" 
+      stroke="currentColor" 
+      stroke-width="2.4" 
+      stroke-linecap="round" 
+      stroke-linejoin="round"
+    />
+  </svg>
+</a>`
     );
   }
   if (project.liveUrl) {
