@@ -75,19 +75,106 @@ function setupContactForm() {
 
   const submitBtn = form.querySelector('button[type="submit"]');
 
+  // --- REGEX & FORMATTING UTILITIES ---
+  const nameRegex = /^[a-zA-Z\s'.]+$/;
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const repetitivePattern = /(.)\1{3,}/;
 
+  // Converts text to Title Case (e.g., "juan dela cruz" -> "Juan Dela Cruz")
+  const toTitleCase = (str) => {
+    return str
+      .toLowerCase()
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  };
+
+  // Converts text to Sentence Case (Capitalizes first letter of sentences)
+  const toSentenceCase = (str) => {
+    if (!str) return "";
+    return str
+      .toLowerCase()
+      .replace(/(^\s*|[.!?]\s+)([a-z])/g, (match, separator, letter) => separator + letter.toUpperCase());
+  };
+
+  // Helper to visually toggle input validity styles
+  const setValidity = (inputElement, isValid) => {
+    if (inputElement.value.trim() === "") {
+      inputElement.style.borderColor = ""; // Reset if empty
+    } else if (isValid) {
+      inputElement.style.borderColor = "#10b981"; // Success Green
+    } else {
+      inputElement.style.borderColor = "#ef4444"; // Error Red
+    }
+  };
+
+  // --- 1. REAL-TIME INLINE VALIDATION (As User Types) ---
+  nameInput.addEventListener("input", () => {
+    const val = nameInput.value.trim();
+    const isValid = val.length >= 2 && nameRegex.test(val) && !repetitivePattern.test(val) && val.toLowerCase() !== "test";
+    setValidity(nameInput, isValid);
+  });
+
+  emailInput.addEventListener("input", () => {
+    const val = emailInput.value.trim();
+    const isValid = emailRegex.test(val);
+    setValidity(emailInput, isValid);
+  });
+
+  messageInput.addEventListener("input", () => {
+    const val = messageInput.value.trim();
+    const isValid = val.length >= 10 && val.length <= 1000 && !repetitivePattern.test(val);
+    setValidity(messageInput, isValid);
+  });
+
+
+  // --- 2. AUTOMATIC FORMATTING (When User Clicks Away / Blurs) ---
+  nameInput.addEventListener("blur", () => {
+    let val = nameInput.value.trim();
+    // Clean up double spaces within the name
+    val = val.replace(/\s+/g, ' '); 
+    if (val) {
+      nameInput.value = toTitleCase(val);
+      // Re-trigger validation pass on formatted value
+      nameInput.dispatchEvent(new Event('input'));
+    }
+  });
+
+  emailInput.addEventListener("blur", () => {
+    const val = emailInput.value.trim();
+    if (val) {
+      emailInput.value = val.toLowerCase();
+      emailInput.dispatchEvent(new Event('input'));
+    }
+  });
+
+  messageInput.addEventListener("blur", () => {
+    let val = messageInput.value.trim();
+    val = val.replace(/\s+/g, ' ');
+    if (val) {
+      messageInput.value = toSentenceCase(val);
+      messageInput.dispatchEvent(new Event('input'));
+    }
+  });
+
+
+  // --- 3. FINAL SUBMISSION HANDLER ---
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
+    // Pull values directly after formatting triggers have completed
     const name = nameInput.value.trim();
     const email = emailInput.value.trim();
     const message = messageInput.value.trim();
     
-    if (!name || !email || !message) return;
+    // Comprehensive Submission Guard Check
+    const isNameValid = name.length >= 2 && name.length <= 60 && nameRegex.test(name) && !repetitivePattern.test(name);
+    const isEmailValid = emailRegex.test(email);
+    const isMessageValid = message.length >= 10 && message.length <= 1000 && !repetitivePattern.test(message);
 
-    if (name.length > 60 || email.length > 100 || message.length > 1000) {
+    if (!isNameValid || !isEmailValid || !isMessageValid) {
       statusText.removeAttribute("hidden");
-      statusText.textContent = "Character limit exceeded. Please shorten your entry.";
+      statusText.textContent = "Please correct the highlighted errors before submitting.";
       statusText.style.color = "#ef4444";
       return;
     }
@@ -99,9 +186,8 @@ function setupContactForm() {
     statusText.style.color = "var(--muted)";
     statusText.removeAttribute("hidden");
 
-    // Move the asynchronous Firebase payload process inside its own execution block
     const sendData = async () => {
-      let ipAddress = "Unknown / Blocked by Adblocker";
+      let ipAddress = "Unknown / Blocked";
       const userAgent = navigator.userAgent; 
       const windowResolution = `${window.screen.width}x${window.screen.height}`;
 
@@ -130,7 +216,12 @@ function setupContactForm() {
 
         statusText.textContent = "Message sent successfully! I will reach out soon.";
         statusText.style.color = "#10b981"; 
+        
+        // Reset inputs and borders completely
         form.reset();
+        nameInput.style.borderColor = "";
+        emailInput.style.borderColor = "";
+        messageInput.style.borderColor = "";
 
       } catch (error) {
         console.error("Firebase submit runtime error: ", error);
@@ -142,11 +233,9 @@ function setupContactForm() {
       }
     };
 
-    // Execute the async function block safely
     sendData();
   });
 }
-
 renderContactSocials();
 setupContactForm();
 

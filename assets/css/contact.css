@@ -107,6 +107,14 @@
     inset -3px -3px 3px var(--light-shadow);
 }
 
+/* Style placeholders to look clean and muted */
+.contact-field input::placeholder,
+.contact-field textarea::placeholder {
+  color: var(--muted, #888888);
+  opacity: 0.6;
+  font-size: 14px;
+}
+
 .contact-field textarea {
   resize: vertical;
   min-height: 130px;
