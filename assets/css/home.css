@@ -64,20 +64,6 @@
   /* flex-wrap: wrap; */
 }
 
-.social-links {
-  margin-top: 48px;
-}
-
-.social-links-label {
-  font-weight: 500;
-}
-
-.social-links-icon-container {
-  margin-top: 12px;
-  gap: 24px;
-  display: flex;
-}
-
 /* ── Avatar ─────────────────────────────────────── */
 
 .hero-image {
