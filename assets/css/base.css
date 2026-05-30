@@ -116,3 +116,42 @@ body {
   background: var(--accent);
   color: #fff;
 }
+
+/* --- PAGE LOADER STYLES --- */
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #121212;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition:
+    opacity 0.4s ease,
+    visibility 0.4s ease;
+}
+
+/* Simple CSS Spinner */
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #6c8ebf;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Class to trigger fade out */
+.loader-overlay.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}

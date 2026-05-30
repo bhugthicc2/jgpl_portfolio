@@ -34,3 +34,20 @@
   }, intervalMs);
 })();
 
+window.addEventListener('load', () => {
+  const loader = document.getElementById('page-loader');
+  const mainContent = document.getElementById('main-content');
+
+  // Fade out the loader
+  loader.classList.add('fade-out');
+
+  // Make the main content visible smoothly
+  if (mainContent) {
+    mainContent.style.opacity = '1';
+  }
+
+  // Completely remove loader from DOM after transition finishes
+  loader.addEventListener('transitionend', () => {
+    loader.remove();
+  });
+});
