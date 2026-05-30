@@ -478,5 +478,7 @@ const renderCodeSnippet = codeSnippet => {
 
 
 
+
+
 renderProjects();
 setupProjectModal();

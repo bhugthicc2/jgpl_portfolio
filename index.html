@@ -37,7 +37,42 @@
           <a class="nav-link" href="#experience">Experience</a>
           <a class="nav-link" href="#contact">Contact</a>
         </nav>
+        <div class="nav-spacer"></div>
+        <button
+          id="theme-toggle"
+          class="icon-box icon-box-popped icon-box-md"
+          aria-label="Toggle dark mode"
+        >
+          <span
+            class="btn-content"
+            style="display: flex; align-items: center; justify-content: center"
+          >
+            <svg
+              class="theme-icon-moon"
+              viewBox="0 0 24 24"
+              width="18"
+              height="18"
+              fill="currentColor"
+            >
+              <path
+                d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.39 5.39 0 0 1-4.4 2.6A5.4 5.4 0 0 1 11 8.6a5.39 5.39 0 0 1 2.6-4.4c-.44-.06-.9-.1-1.36-.1Z"
+              ></path>
+            </svg>
 
+            <svg
+              class="theme-icon-sun"
+              viewBox="0 0 24 24"
+              width="18"
+              height="18"
+              fill="currentColor"
+              style="display: none"
+            >
+              <path
+                d="M12 7a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 2a3 3 0 1 1-3 3 3 3 0 0 1 3-3zm0-4a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1zm0 14a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v1a1 1 0 0 0-1-1zm8.36-12.22a1 1 0 0 0-1.42 0l-.7.7a1 1 0 0 0 1.41 1.41l.71-.7a1 1 0 0 0 0-1.41zM5.76 16.83l-.7.7a1 1 0 1 0 1.41 1.41l.7-.71a1 1 0 1 0-1.41-1.4zm12.6 1.41a1 1 0 0 0 1.42 0l.7-.7a1 1 0 0 0-1.41-1.41l-.71.7a1 1 0 0 0 0 1.41zM5.76 7.17a1 1 0 0 0 1.42 0l.7-.7a1 1 0 0 0-1.41-1.41l-.7.71a1 1 0 0 0 0 1.4zM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2zM4 11H3a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2z"
+              />
+            </svg>
+          </span>
+        </button>
         <button
           class="nav-hamburger"
           aria-expanded="false"
@@ -287,7 +322,10 @@
             </div>
             <div class="github-heatmap-frame">
               <img
+                id="github-heatmap-img"
                 src="https://ghchart.rshah.org/6c8ebf/bhugthicc2"
+                data-light="https://ghchart.rshah.org/6c8ebf/bhugthicc2"
+                data-dark="https://ghchart.rshah.org/8fb3e6/bhugthicc2"
                 alt="Jesie's GitHub contribution heatmap"
                 loading="lazy"
               />
@@ -540,6 +578,7 @@
     </footer>
     <!-- JAVASCRIPT -->
     <script type="module" src="./assets/js/main.js"></script>
+    <script type="module" src="./assets/js/theme.js"></script>
     <script type="module" src="./assets/js/home.js"></script>
     <script type="module" src="./assets/js/about.js"></script>
     <script type="module" src="./assets/js/skills.js"></script>

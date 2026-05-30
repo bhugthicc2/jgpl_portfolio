@@ -26,7 +26,6 @@
 }
 .nav-logo img {
   height: 40px;
-
 }
 .nav-logo span {
   font-size: 20px;
@@ -55,7 +54,7 @@
   border-radius: var(--radius-sm);
   font-size: var(--text-body);
   font-weight: 600;
-  color: var(--foreground);
+  color: var(--muted);
   letter-spacing: 0.4px;
   cursor: pointer;
   transition: var(--transition-fast);
@@ -178,4 +177,34 @@
 .drawer-link:hover::after,
 .drawer-link.active::after {
   width: 20px;
+}
+
+/* ── Theme Button Icon Controls ─────────────────────────── */
+
+/* 1. Default (Light Mode) Styling */
+#theme-toggle {
+  color: var(--foreground); /* Soft deep blue in light mode */
+}
+
+#theme-toggle .theme-icon-sun {
+  display: none !important; /* Hide sun by default */
+}
+
+#theme-toggle .theme-icon-moon {
+  display: block !important; /* Show moon by default */
+}
+
+/* 2. Dark Mode Overrides */
+.dark-mode #theme-toggle {
+  color: var(
+    --accent
+  ); /* Makes the icon pop with your light blue accent in dark mode */
+}
+
+.dark-mode #theme-toggle .theme-icon-moon {
+  display: none !important; /* Hide moon when dark mode is active */
+}
+
+.dark-mode #theme-toggle .theme-icon-sun {
+  display: block !important; /* Show sun when dark mode is active */
 }

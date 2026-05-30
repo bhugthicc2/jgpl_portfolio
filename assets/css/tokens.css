@@ -11,6 +11,14 @@
   --success: #4caf82;
   --error: #e57373;
 
+  /* code blocks */
+  --code-bg: #0f172a;
+  --code-text: #dbeafe;
+  --code-comment: #64748b;
+  --code-keyword: #f472b6;
+  --code-number: #fb923c;
+  --code-function: #38bdf8;
+
   /* Neumorphic Shadows ──────────────────────────────────── */
   --shadow-raised:
     -6px -6px 18px var(--light-shadow), 6px 6px 18px var(--dark-shadow);
@@ -60,4 +68,44 @@
   --nav-height: 68px;
   /* scroll offset */
   --scroll-offset: calc(var(--nav-height));
+}
+
+/* ─── DARK MODE ─── */
+.dark-mode {
+  --base: #181d26; /* Dropped slightly from #1e2530 for deep, comfortable contrast */
+  --light-shadow: #212834; /* Tightened proximity to base color so it blends smoothly without "glowing" */
+  --dark-shadow: #0f1218; /* True obsidian anchor for realistic depth */
+  --foreground: #cbd5e1;
+  --dark: #f8fafc;
+  --muted: #94a3b8;
+  --mid: #cbd5e1;
+  --accent: #8fb3e6;
+
+  /* code blocks */
+  --code-bg: #0f1218; /* Directly references the absolute deep value for isolation */
+  --code-text: #e2e8f0;
+  --code-comment: #475569;
+  --code-keyword: #f43f5e;
+  --code-number: #f97316;
+  --code-function: #0ea5e9;
+
+  /* ── Smooth Dark Neumorphic Shadows (Re-engineered for Low Eye Strain) ── */
+  /* We use fine-tuned alphas so the shadows melt organically into the dark canvas */
+  --shadow-raised:
+    -5px -5px 14px rgba(255, 255, 255, 0.123), 5px 5px 14px rgba(0, 0, 0, 0.5);
+
+  --shadow-inset:
+    inset 3px 3px 8px rgba(0, 0, 0, 0.6),
+    inset -3px -3px 8px rgba(255, 255, 255, 0.123);
+
+  --shadow-raised-sm:
+    -3px -3px 8px rgba(255, 255, 255, 0.123), 3px 3px 8px rgba(0, 0, 0, 0.45);
+
+  --shadow-inset-sm:
+    inset 2px 2px 5px rgba(0, 0, 0, 0.5),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.015);
+
+  --shadow-raised-lg:
+    -10px -10px 24px rgba(255, 255, 255, 0.123),
+    10px 10px 24px rgba(0, 0, 0, 0.55);
 }

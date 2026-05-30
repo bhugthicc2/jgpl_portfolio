@@ -177,27 +177,27 @@
   text-align: justify;
 }
 
-/* ── Code Syntax Colors ─────────────────────────────────── */
-.modal-code-block {
-  background-color: #0f172a !important; /* Elegant deep space backdrop */
-  color: #cbd5e1 !important; /* Fallback off-white for plain variables */
+/* ── GitHub Heatmap Container Adjustments ───────────────── */
+.github-heatmap-frame {
+  background: var(--base);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: var(--transition);
 }
 
-/* Syntax Highlighting Colors */
-.code-comment {
-  color: #64748b; /* Soft muted slate gray for code annotations */
-  font-style: italic;
+/* Give the image a soft neumorphic inset container or subtle isolation */
+.dark-mode .github-heatmap-frame {
+  background: var(
+    --code-bg
+  ); /* Use your ultra-dark slate frame for background isolation */
+  box-shadow: var(--shadow-inset-sm);
 }
 
-.code-keyword {
-  color: #f472b6; /* Soft pink for language reserved words */
-  font-weight: 600;
-}
-
-.code-number {
-  color: #fb923c; /* Bright crisp orange for calculations and constants */
-}
-
-.code-function {
-  color: #38bdf8; /* Sky blue to cleanly isolate operations and logic keys */
+.github-heatmap-frame img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }

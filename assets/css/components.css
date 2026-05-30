@@ -330,7 +330,7 @@ body.modal-open {
   margin-top: 8px;
   font-size: clamp(18px, 3vw, 28px);
   font-weight: 800;
-  color: #0f172a;
+  color: var(--foreground);
   line-height: 1.1;
 }
 
@@ -386,7 +386,7 @@ body.modal-open {
 }
 
 .modal-summary {
-  color: #1e293b;
+  color: var(--dark);
   line-height: 1.8;
   max-width: 62ch;
 }
@@ -466,7 +466,7 @@ body.modal-open {
 }
 
 .modal-metric-pill strong {
-  color: #0f172a;
+  color: var(--foreground);
   font-size: var(--text-sm);
   font-weight: 800;
   line-height: 1.35;
@@ -474,12 +474,12 @@ body.modal-open {
 
 .modal-case-section p,
 .modal-note p {
-  color: #1e293b;
+  color: var(--dark);
   line-height: 1.8;
 }
 
 .modal-case-section p strong {
-  color: #0f172a;
+  color: var(--foreground);
   font-weight: 800;
 }
 
@@ -507,17 +507,15 @@ body.modal-open {
 
 .modal-highlight-list li {
   position: relative;
-  color: #1e293b;
+  color: var(--dark);
   line-height: 1.7;
   padding-left: 18px;
 }
 
+/* ── Code Syntax Colors ─────────────────────────────────── */
 .modal-code-block {
-  max-width: 100%;
-  overflow-x: hidden;
-  border-radius: var(--radius-sm);
-  background: #0f172a;
-  color: #dbeafe;
+  background-color: var(--code-bg);
+  color: var(--code-text);
   box-shadow:
     inset 4px 4px 9px rgba(0, 0, 0, 0.35),
     inset -4px -4px 9px rgba(255, 255, 255, 0.04);
@@ -528,6 +526,26 @@ body.modal-open {
   white-space: pre-wrap;
   overflow-wrap: anywhere;
   word-break: break-word;
+  border-radius: var(--radius-sm);
+}
+
+/* Syntax Highlighting Colors */
+.code-comment {
+  color: var(--code-comment);
+  font-style: italic;
+}
+
+.code-keyword {
+  color: var(--code-keyword);
+  font-weight: 600;
+}
+
+.code-number {
+  color: var(--code-number);
+}
+
+.code-function {
+  color: var(--code-function);
 }
 
 .modal-code-block code {
