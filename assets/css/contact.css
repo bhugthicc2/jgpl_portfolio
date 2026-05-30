@@ -125,3 +125,16 @@
   outline: none;
   border-color: rgba(108, 142, 191, 0.65);
 }
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#form-status .spinner {
+  animation: spin 1s linear infinite;
+}
