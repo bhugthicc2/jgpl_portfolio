@@ -54,6 +54,9 @@
   --text-sm: 12px;
   --text-xs: 11px;
 
+  /* Hero Title Font */
+  --title-font: "Outfit", sans-serif;
+
   /* Border Radius ───────────────────────────────────────── */
   --radius-xl: 24px;
   --radius-lg: 20px;

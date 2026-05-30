@@ -35,6 +35,14 @@
   font-style: italic;
 }
 
+/* hero font */
+@font-face {
+  font-family: "Outfit";
+  src: url("../fonts/Outfit/Outfit-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
 html {
   font-family: var(--font);
 }

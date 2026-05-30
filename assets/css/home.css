@@ -38,6 +38,7 @@
   color: var(--dark);
   letter-spacing: -1px;
   margin-top: 4px;
+  font-family: var(--title-font);
 }
 
 .hero-role {
