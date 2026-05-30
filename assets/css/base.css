@@ -134,23 +134,36 @@ body {
     visibility 0.4s ease;
 }
 
-/* Simple CSS Spinner */
-.spinner {
-  width: 50px;
-  height: 50px;
-  border: 5px solid rgba(255, 255, 255, 0.1);
-  border-top-color: var(--accent);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
+.loader-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
+/* Custom logo sizing and breathing animation */
+.loader-logo {
+  height: 65px; /* Sized slightly larger than your 40px nav logo for visibility */
+  width: auto;
+  user-select: none;
+  pointer-events: none;
+  /* Smooth breathing animation: combines subtle scaling and soft opacity shifts */
+  animation: logoBreath 2s ease-in-out infinite;
+}
+
+/* Keyframes for the high-end breathing effect */
+@keyframes logoBreath {
+  0%,
+  100% {
+    transform: scale(0.95);
+    opacity: 0.65;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
   }
 }
 
-/* Class to trigger fade out */
+/* Class applied via JS to gracefully exit the loader screen */
 .loader-overlay.fade-out {
   opacity: 0;
   visibility: hidden;
