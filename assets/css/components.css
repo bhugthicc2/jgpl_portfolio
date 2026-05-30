@@ -335,7 +335,7 @@ body.modal-open {
 .modal-case-study {
   min-height: calc(100vh - clamp(28px, 4vw, 48px));
   display: grid;
-  grid-template-columns: minmax(300px, 0.72fr) minmax(0, 1.28fr);
+  grid-template-columns: minmax(300px, 0.5fr) minmax(0, 1.5fr);
   gap: clamp(20px, 3vw, 42px);
   align-items: stretch;
 }
@@ -356,7 +356,7 @@ body.modal-open {
   box-shadow:
     inset 5px 5px 12px var(--dark-shadow),
     inset -5px -5px 12px var(--light-shadow); */
-  padding: clamp(18px, 2.4vw, 28px);
+  padding: clamp(18px, 2.4vw, 18px);
   scrollbar-width: thin;
   scrollbar-color: var(--accent) transparent;
 }
