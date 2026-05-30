@@ -27,14 +27,17 @@
   /* Neumorphic Shadows ──────────────────────────────────── */
   --shadow-raised:
     -6px -6px 18px var(--light-shadow), 6px 6px 18px var(--dark-shadow);
-  --shadow-inset:
-    4px 4px 10px var(--dark-shadow), -4px -4px 10px var(--light-shadow);
+
   --shadow-raised-sm:
     -4px -4px 10px var(--light-shadow), 4px 4px 10px var(--dark-shadow);
-  --shadow-inset-sm:
-    2px 2px 6px var(--dark-shadow), -2px -2px 6px var(--light-shadow);
+
   --shadow-raised-lg:
     -12px -12px 30px var(--light-shadow), 12px 12px 30px var(--dark-shadow);
+
+  --shadow-inset:
+    4px 4px 10px var(--dark-shadow), -4px -4px 10px var(--light-shadow);
+  --shadow-inset-sm:
+    2px 2px 6px var(--dark-shadow), -2px -2px 6px var(--light-shadow);
 
   /* Spacing ─────────────────────────────────────────────── */
   --padding-desktop: 200px;
@@ -78,7 +81,7 @@
 /* ─── DARK MODE ─── */
 .dark-mode {
   --base: #1d2533;
-  --light-shadow: #212834;
+  --light-shadow: #2f394a;
   --dark-shadow: #0f1218;
   --foreground: #cbd5e1;
   --dark: #f8fafc;
@@ -103,19 +106,17 @@
 
   --shadow-raised:
     -5px -5px 14px rgba(255, 255, 255, 0.123), 5px 5px 14px rgba(0, 0, 0, 0.5);
+  --shadow-raised-sm:
+    -3px -3px 8px rgba(255, 255, 255, 0.123), 3px 3px 8px rgba(0, 0, 0, 0.45);
+  --shadow-raised-lg:
+    -10px -10px 24px rgba(255, 255, 255, 0.123),
+    10px 10px 24px rgba(0, 0, 0, 0.55);
 
   --shadow-inset:
     inset 3px 3px 8px rgba(0, 0, 0, 0.6),
     inset -3px -3px 8px rgba(255, 255, 255, 0.153);
 
-  --shadow-raised-sm:
-    -3px -3px 8px rgba(255, 255, 255, 0.123), 3px 3px 8px rgba(0, 0, 0, 0.45);
-
   --shadow-inset-sm:
     inset 2px 2px 5px rgba(0, 0, 0, 0.5),
     inset -2px -2px 5px rgba(255, 255, 255, 0.153);
-
-  --shadow-raised-lg:
-    -10px -10px 24px rgba(255, 255, 255, 0.123),
-    10px 10px 24px rgba(0, 0, 0, 0.55);
 }

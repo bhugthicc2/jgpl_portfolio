@@ -50,7 +50,7 @@
 }
 
 .txt-btn:hover {
-  color: var(--dark-shadow);
+  color: var(--muted);
 }
 
 .txt-btn svg {
