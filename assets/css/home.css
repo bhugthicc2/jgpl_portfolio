@@ -138,7 +138,7 @@
   content: "";
   position: absolute;
   /* Extended to -50% to give the gradient runway to slide without getting cut off */
-  inset: -50%;
+  inset: -70%;
   border-radius: 50%;
   z-index: 999;
   pointer-events: none;
@@ -166,7 +166,7 @@
 
 /* HOVER STATE: Slides across to the right side */
 .avatar-inner:hover::after {
-  transform: translateX(45%) translateY(-15%) rotate(-15deg);
+  transform: translateX(22%) translateY(-15%) rotate(-15deg);
   opacity: 1; /* Brightens up to full intensity during the movement */
 }
 

@@ -113,7 +113,7 @@
 }
 
 .btn-filled {
-  background: var(--accent);
+  background: var(--btn-gradient);
   color: var(--light-shadow);
   box-shadow: var(--shadow-raised);
   border: 2px solid var(--base);
@@ -135,12 +135,12 @@
   color: var(--foreground);
   box-shadow: var(--shadow-inset);
   margin-left: 10px;
-  border: 2px solid rgba(255, 255, 255, 0.25);
+  border: 2px solid var(--btn-border);
 }
 .btn-outline:hover {
   color: var(--accent);
   box-shadow: var(--shadow-inset);
-  border-color: rgba(255, 255, 255, 0.25);
+  border-color: var(--btn-border);
 }
 .btn-outline:active {
   box-shadow: var(--shadow-inset);
@@ -212,9 +212,7 @@
   background: var(--base);
   border-radius: var(--radius-xs);
   /* box-shadow: var(--shadow-inset-sm); */
-  box-shadow:
-    inset 3px 3px 3px var(--dark-shadow),
-    inset -3px -3px 3px var(--light-shadow);
+  box-shadow: var(--shadow-inset-sm);
   flex-shrink: 0;
 }
 /* for icon popped icon button */

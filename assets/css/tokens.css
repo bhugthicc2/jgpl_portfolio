@@ -19,6 +19,11 @@
   --code-number: #fb923c;
   --code-function: #38bdf8;
 
+  /*btn border */
+  --btn-border: rgba(255, 255, 255, 0.25);
+  /* btn gradient */
+  --btn-gradient: linear-gradient(to bottom, #8ba8d4 0%, var(--accent) 100%);
+
   /* Neumorphic Shadows ──────────────────────────────────── */
   --shadow-raised:
     -6px -6px 18px var(--light-shadow), 6px 6px 18px var(--dark-shadow);
@@ -72,9 +77,9 @@
 
 /* ─── DARK MODE ─── */
 .dark-mode {
-  --base: #181d26; /* Dropped slightly from #1e2530 for deep, comfortable contrast */
-  --light-shadow: #212834; /* Tightened proximity to base color so it blends smoothly without "glowing" */
-  --dark-shadow: #0f1218; /* True obsidian anchor for realistic depth */
+  --base: #1d2533;
+  --light-shadow: #212834;
+  --dark-shadow: #0f1218;
   --foreground: #cbd5e1;
   --dark: #f8fafc;
   --muted: #94a3b8;
@@ -89,21 +94,26 @@
   --code-number: #f97316;
   --code-function: #0ea5e9;
 
-  /* ── Smooth Dark Neumorphic Shadows (Re-engineered for Low Eye Strain) ── */
-  /* We use fine-tuned alphas so the shadows melt organically into the dark canvas */
+  /*btn border */
+  --btn-border: rgba(255, 255, 255, 0.027);
+  /* btn gradient */
+  --btn-gradient: linear-gradient(to bottom, var(--accent) 0%, #466799 100%);
+
+  /* ── Smooth Dark Neumorphic Shadows  ── */
+
   --shadow-raised:
     -5px -5px 14px rgba(255, 255, 255, 0.123), 5px 5px 14px rgba(0, 0, 0, 0.5);
 
   --shadow-inset:
     inset 3px 3px 8px rgba(0, 0, 0, 0.6),
-    inset -3px -3px 8px rgba(255, 255, 255, 0.123);
+    inset -3px -3px 8px rgba(255, 255, 255, 0.153);
 
   --shadow-raised-sm:
     -3px -3px 8px rgba(255, 255, 255, 0.123), 3px 3px 8px rgba(0, 0, 0, 0.45);
 
   --shadow-inset-sm:
     inset 2px 2px 5px rgba(0, 0, 0, 0.5),
-    inset -2px -2px 5px rgba(255, 255, 255, 0.015);
+    inset -2px -2px 5px rgba(255, 255, 255, 0.153);
 
   --shadow-raised-lg:
     -10px -10px 24px rgba(255, 255, 255, 0.123),
